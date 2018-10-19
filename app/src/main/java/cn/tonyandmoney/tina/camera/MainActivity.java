@@ -2,16 +2,14 @@ package cn.tonyandmoney.tina.camera;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import cn.tonyandmoney.tina.camera.support.HancNetSupport;
 
 public class MainActivity extends AppCompatActivity {
+    private final String TAG = MainActivity.class.getSimpleName();
 
-    // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
-        HancNetSupport.getInstance().hancNetSDKInit();
+        TextView tv = findViewById(R.id.sample_text);
+        tv.setText(HancNetSupport.getInstance().libName());
+        boolean success = HancNetSupport.getInstance().hancNetSDKInit();
+        Log.i(TAG, "init " + success);
+
+        HancNetSupport.getInstance().hancConnect("127.0.0.1",99,"what",3000,1234567);
     }
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
 }

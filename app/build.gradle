@@ -11,7 +11,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
-                cppFlags ""
+                cppFlags "-frtti -fexceptions"
+                arguments "-DANDROID_ARM_NEON=TRUE -lstdc++"
             }
         }
         ndk{
@@ -28,6 +29,11 @@ android {
         cmake {
             path "CMakeLists.txt"
         }
+    }
+
+    sourceSets.main {
+        jni.srcDirs = []
+        jniLibs.srcDir 'src/main/libs'
     }
 }
 

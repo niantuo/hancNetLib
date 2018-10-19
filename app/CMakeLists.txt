@@ -10,47 +10,27 @@ cmake_minimum_required(VERSION 3.4.1)
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
+set(CMAKE_VERBOSE_MAKEFILE on)
 
+set(LOCAL_ALLOW_UNDEFINED_SYMBOLS true)
 
-set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs)
-
-add_library(
-        lib-hanc-net-sdk
-        SHARED
-        IMPORTED)
-
-set_target_properties(
-        lib-hanc-net-sdk
-        PROPERTIES IMPORTED_LOCATION
-        ${distribution_DIR}/${ANDROID_ABI}/libHancNetSDK.so
-)
-
-#支持-std=gnu++11
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
-
-#判断编译器类型,如果是gcc编译器,则在编译选项中加入c++11支持
-if(CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
-    message(STATUS "optional:-std=c++11")
-endif(CMAKE_COMPILER_IS_GNUCXX)
+set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/libs)
 
 
 
 add_library( # Sets the name of the library.
-        native-lib
-
-        # Sets the library as a shared library.
-        SHARED
-
-        # Provides a relative path to your source file(s).
-        src/main/cpp/native-lib.cpp)
-
-
-add_library(
         net-lib
         SHARED
-        src/main/cpp/hanc-net-lib.cpp
-)
+        src/main/cpp/hanc-net-lib.cpp)
+
+ add_library(
+         net-sdk
+         SHARED
+         IMPORTED )
+ set_target_properties(
+                        net-sdk
+                        PROPERTIES IMPORTED_LOCATION
+                        ${distribution_DIR}/${ANDROID_ABI}/libHancNetSDK.so)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -69,10 +49,13 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+
+target_include_directories(net-lib PRIVATE
+               ${distribution_DIR}/include)
+
 target_link_libraries( # Specifies the target library.
-        native-lib
-        net-lib
-        lib-hanc-net-sdk
+         net-lib
+         net-sdk
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
