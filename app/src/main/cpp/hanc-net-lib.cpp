@@ -118,34 +118,25 @@ Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_hancNetSDKInit(JNIEnv *e
     return static_cast<jboolean>(success);
 }
 
-extern "C" {
+extern "C"
 JNIEXPORT jint JNICALL
 Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_hancConnect(JNIEnv *env, jobject thiz,
                                                                     jstring zIp, jint zPort,
                                                                     jstring zCmd, jint timeout,
                                                                     jlong dwUser) {
-
     char *ip = const_cast<char *>(env->GetStringUTFChars(zIp, 0));
     char *cmd = const_cast<char *>(env->GetStringUTFChars(zCmd, 0));
     env->ReleaseStringUTFChars(zIp, ip);
     env->ReleaseStringUTFChars(zCmd, cmd);
-
-
     jClz = (env)->NewGlobalRef(thiz);
     LOGI("Connect jClz:%p", &jClz);
-
-    void (*callback)(int sessionId, char *pBuf, int nBufLen, long dwUser);
+    void (*callback)(int _, char *pBuf, int nBufLen, long dwUser);
     callback = NetCallback;
-
-
     int cmdSize = strlen(cmd);
     int port = zPort;
-
     int errorCode = HancNetSDK_Connect(ip, port, cmd, cmdSize, timeout, callback,
                                           static_cast<long>(dwUser));
     return errorCode;
-}
-
 }
 
 
