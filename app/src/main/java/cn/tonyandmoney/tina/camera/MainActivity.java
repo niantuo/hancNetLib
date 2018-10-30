@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         int result = mHancNetLib.login(ip, Integer.parseInt(port), username, password);
+        Log.i(TAG, String.format("login username:%s,password: %s, ip:%s,port:%s,result:%s", username, password, ip, port,result));
         if (result < 0) {
             Toast.makeText(this, "登陆失败。", Toast.LENGTH_LONG).show();
         } else {

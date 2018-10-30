@@ -6,6 +6,9 @@ import com.sun.jna.Native;
 import cn.tonyandmoney.tina.camera.support.callback.IDemoCallback;
 import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 
+/**
+ * 封装一下
+ */
 public interface NativeLibrary extends Library {
 
     NativeLibrary INSTANCE = (NativeLibrary) Native.loadLibrary("net-lib", NativeLibrary.class);

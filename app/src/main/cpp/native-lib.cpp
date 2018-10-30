@@ -2,7 +2,7 @@
 #include <string>
 #include <hancnetsdk.h>
 
-#define CMS_LOGIN_CLIENT 1
+#define CMS_LOGIN_CLIENT  1
 #define CMS_LOGIN_MOBI                            15 //手机端
 #define CMS_MSG_LOGIN                      9 //登录
 
