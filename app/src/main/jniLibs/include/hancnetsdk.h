@@ -1,6 +1,3 @@
-
-
-
 #ifndef __HC_NETWORK
 #define __HC_NETWORK
 

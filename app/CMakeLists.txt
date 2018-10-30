@@ -14,14 +14,14 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 
 set(LOCAL_ALLOW_UNDEFINED_SYMBOLS true)
 
-set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/libs)
+set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs)
 
 
 
 add_library( # Sets the name of the library.
         net-lib
         SHARED
-        src/main/cpp/hanc-net-lib.cpp)
+        src/main/cpp/native-lib.cpp)
 
  add_library(
          net-sdk
