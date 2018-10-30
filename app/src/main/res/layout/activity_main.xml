@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/serverIp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_input_ip"
-        android:padding="10dp"
-        android:text="@string/default_server_ip" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/serverIp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_ip"
+            android:inputType="text"
+            android:padding="10dp"
+            android:text="@string/default_server_ip" />
 
 
-    <EditText
-        android:id="@+id/serverPort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_input_port"
-        android:padding="10dp"
-        android:text="@string/default_server_port" />
+        <EditText
+            android:id="@+id/serverPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_port"
+            android:inputType="text"
+            android:padding="10dp"
+            android:text="@string/default_server_port" />
 
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_input_username"
-        android:inputType="text"
-        android:padding="10dp" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_username"
+            android:inputType="text"
+            android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_pwd_input"
-        android:inputType="text"
-        android:padding="10dp" />
+        <EditText
+            android:id="@+id/userPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_pwd_input"
+            android:inputType="text"
+            android:padding="10dp" />
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="@string/btn_text_login" />
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/btn_text_login" />
+
+    </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

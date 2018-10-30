@@ -8,7 +8,25 @@ import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 
 public interface NativeLibrary extends Library {
 
-    NativeLibrary INSTANCE = (NativeLibrary) Native.loadLibrary("net-lib",NativeLibrary.class);
+    NativeLibrary INSTANCE = (NativeLibrary) Native.loadLibrary("net-lib", NativeLibrary.class);
 
-    void testCallback(IDemoCallback callback, MsgHeaderInfo info);
+    /**
+     * 初始化SDK
+     *
+     * @return 成功返回true
+     */
+    boolean hancNetSdkInit();
+
+
+    /**
+     * 登陆到服务器
+     *
+     * @param ip       服务器ip
+     * @param port     服务器端口
+     * @param username 用户名
+     * @param password 密码
+     * @return 登陆返回值
+     */
+    int login(String ip, int port, String username, String password);
+
 }
