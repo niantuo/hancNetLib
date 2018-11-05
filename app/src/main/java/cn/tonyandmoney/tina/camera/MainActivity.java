@@ -12,14 +12,17 @@ import android.widget.Toast;
 import com.sun.jna.NativeLong;
 
 import cn.tonyandmoney.tina.camera.constants.Constants;
+import cn.tonyandmoney.tina.camera.support.HancNetSupport;
 import cn.tonyandmoney.tina.camera.support.INetCallback;
+import cn.tonyandmoney.tina.camera.support.JNAHancNetLibrary;
 import cn.tonyandmoney.tina.camera.support.NativeLibrary;
 import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
 
-    private final NativeLibrary mHancNetLib = NativeLibrary.INSTANCE;
+    private  NativeLibrary mHancNetLib;
+    private JNAHancNetLibrary mSupport;
     private EditText mUserText;
     private EditText mPwdText;
     private EditText mIpText;
@@ -41,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 login();
             }
         });
+
+        HancNetSupport.getInstance();
+        mSupport = JNAHancNetLibrary.INSTANCE;
+        mHancNetLib = NativeLibrary.INSTANCE;
+
         boolean result = mHancNetLib.hancNetSdkInit();
         Log.i(TAG, String.format("init errCode:%s", result));
         if (result) {
