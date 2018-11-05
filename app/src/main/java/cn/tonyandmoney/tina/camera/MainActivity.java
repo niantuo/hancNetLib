@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.sun.jna.NativeLong;
 
 import cn.tonyandmoney.tina.camera.constants.Constants;
+import cn.tonyandmoney.tina.camera.support.HancNetSupport;
 import cn.tonyandmoney.tina.camera.support.INetCallback;
 import cn.tonyandmoney.tina.camera.support.NativeLibrary;
 import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
@@ -19,7 +20,6 @@ import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
 
-    private final NativeLibrary mHancNetLib = NativeLibrary.INSTANCE;
     private EditText mUserText;
     private EditText mPwdText;
     private EditText mIpText;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 login();
             }
         });
-        boolean result = mHancNetLib.hancNetSdkInit();
+        boolean result = HancNetSupport.getInstance().init();
         Log.i(TAG, String.format("init errCode:%s", result));
         if (result) {
             Toast.makeText(this, "SDK初始化成功。", Toast.LENGTH_LONG).show();
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "请输入用户密码", Toast.LENGTH_LONG).show();
             return;
         }
-        int result = mHancNetLib.login(ip, Integer.parseInt(port), username, password);
-        Log.i(TAG, String.format("login username:%s,password: %s, ip:%s,port:%s,result:%s", username, password, ip, port,result));
+        int result = HancNetSupport.getInstance().loginToServer(ip, Integer.parseInt(port), username, password);
+        Log.i(TAG, String.format("login username:%s,password: %s, ip:%s,port:%s,result:%s", username, password, ip, port, result));
         if (result < 0) {
             Toast.makeText(this, "登陆失败。", Toast.LENGTH_LONG).show();
         } else {

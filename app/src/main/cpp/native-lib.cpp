@@ -22,14 +22,7 @@ typedef struct _msg_user_info  //登录信息
     char szCenterIP[50];    //预留
 } MSG_USER_INFO, *LPMSG_USER_INFO;
 
-/**
- * 初始化SDK
- * @return
- */
-extern "C"
-bool hancNetSdkInit() {
-    return HancNetSDK_Init();
-}
+
 
 /**
  * 登陆到服务端，如何从返回的数据中拿到设备信息呢？
@@ -66,4 +59,38 @@ int login(char *ip, int port, char *username, char *pass) {
         HancNetSDK_DataRelease(nSession);
     }
     return nSession;
+}
+
+/**
+ * 初始化SDK
+ * @return
+ */
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_init(JNIEnv *env, jobject instance) {
+    return static_cast<jboolean>(HancNetSDK_Init());
+}
+
+
+/**
+ * 登陆到服务器获取设备数据
+ * @return
+ */
+extern "C"
+JNIEXPORT jint JNICALL
+Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_loginToServer(JNIEnv *env, jobject instance,
+                                                                      jstring ip_, jint port,
+                                                                      jstring username_,
+                                                                      jstring password_) {
+    const char *ip = env->GetStringUTFChars(ip_, 0);
+    const char *username = env->GetStringUTFChars(username_, 0);
+    const char *password = env->GetStringUTFChars(password_, 0);
+
+
+    return login(const_cast<char *>(ip), port, const_cast<char *>(username),
+                 const_cast<char *>(password));
+
+//    env->ReleaseStringUTFChars(ip_, ip);
+//    env->ReleaseStringUTFChars(username_, username);
+//    env->ReleaseStringUTFChars(password_, password);
 }
