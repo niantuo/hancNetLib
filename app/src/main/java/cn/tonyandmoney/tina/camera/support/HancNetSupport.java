@@ -8,7 +8,6 @@ public class HancNetSupport {
     private final static String TAG = HancNetSupport.class.getSimpleName();
 
     static {
-        System.loadLibrary("HancNetSDK");
         System.loadLibrary("net-lib");
     }
 
@@ -22,7 +21,8 @@ public class HancNetSupport {
     }
 
 
-    public native String libName();
+    public native boolean init();
+    public native int loginToServer(String ip,int port,String username,String password);
 
 
 }
