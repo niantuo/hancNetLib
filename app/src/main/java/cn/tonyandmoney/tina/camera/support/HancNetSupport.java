@@ -25,4 +25,9 @@ public class HancNetSupport {
     public native int loginToServer(String ip,int port,String username,String password);
 
 
+    public void callback(){
+
+    }
+
+
 }

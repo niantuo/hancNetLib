@@ -33,7 +33,7 @@ typedef struct _msg_user_info  //登录信息
  * @return
  */
 extern "C"
-int login(char *ip, int port, char *username, char *pass) {
+int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, char *pass) {
     MSG_HEAD_INFO head;
     memset(&head, 0, sizeof(MSG_HEAD_INFO));
     head.nType = CMS_MSG_LOGIN;
@@ -58,6 +58,10 @@ int login(char *ip, int port, char *username, char *pass) {
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
     }
+
+   jclass  clz = env->GetObjectClass(instance);
+    jmethodID  callbackId = env->GetMethodID(clz,"callback","");
+
     return nSession;
 }
 
@@ -87,7 +91,7 @@ Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_loginToServer(JNIEnv *en
     const char *password = env->GetStringUTFChars(password_, 0);
 
 
-    return login(const_cast<char *>(ip), port, const_cast<char *>(username),
+    return login(env,instance,const_cast<char *>(ip), port, const_cast<char *>(username),
                  const_cast<char *>(password));
 
 //    env->ReleaseStringUTFChars(ip_, ip);
