@@ -50,7 +50,7 @@ int login(char *ip, int port, char *username, char *pass) {
     memcpy(buf, &head, sizeof(MSG_HEAD_INFO));
     memcpy(buf + sizeof(MSG_HEAD_INFO), &user, sizeof(MSG_USER_INFO));
 
-    char *ppRecvBuf = new char[1024];
+    char *ppRecvBuf = NULL;
     int pRecvLen = 0;
     int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen,
                                                        5000, true);

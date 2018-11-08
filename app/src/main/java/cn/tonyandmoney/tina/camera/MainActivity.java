@@ -14,6 +14,7 @@ import com.sun.jna.NativeLong;
 import cn.tonyandmoney.tina.camera.constants.Constants;
 import cn.tonyandmoney.tina.camera.support.HancNetSupport;
 import cn.tonyandmoney.tina.camera.support.INetCallback;
+import cn.tonyandmoney.tina.camera.support.JNAHancNetLibrary;
 import cn.tonyandmoney.tina.camera.support.NativeLibrary;
 import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 
