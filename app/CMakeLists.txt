@@ -17,21 +17,62 @@ set(LOCAL_ALLOW_UNDEFINED_SYMBOLS true)
 set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs)
 
 
-
 add_library( # Sets the name of the library.
         net-lib
         SHARED
         src/main/cpp/native-lib.cpp
         src/main/cpp/cJSON.c)
 
- add_library(
-         net-sdk
-         SHARED
-         IMPORTED )
- set_target_properties(
-                        net-sdk
-                        PROPERTIES IMPORTED_LOCATION
-                        ${distribution_DIR}/${ANDROID_ABI}/libHancNetSDK.so)
+add_library(
+        net-sdk
+        SHARED
+        IMPORTED)
+set_target_properties(
+        net-sdk
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libHancNetSDK.so)
+
+add_library(libavcodec SHARED IMPORTED)
+set_target_properties(
+        libavcodec
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavcodec-57.so)
+add_library(libavdevice SHARED IMPORTED)
+set_target_properties(
+        libavdevice
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavdevice-57.so)
+add_library(libavfilter SHARED IMPORTED)
+set_target_properties(
+        libavfilter
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavfilter-6.so)
+add_library(libavformat SHARED IMPORTED)
+set_target_properties(
+        libavformat
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavformat-57.so)
+add_library(libavutil SHARED IMPORTED)
+set_target_properties(
+        libavutil
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavutil-55.so)
+add_library(libpostproc SHARED IMPORTED)
+set_target_properties(
+        libpostproc
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libpostproc-54.so)
+add_library(libswresample SHARED IMPORTED)
+set_target_properties(
+        libswresample
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libswresample-2.so)
+add_library(libswscale SHARED IMPORTED)
+set_target_properties(
+        libswscale
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libswscale-4.so)
+
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -52,11 +93,19 @@ find_library( # Sets the name of the path variable.
 
 
 target_include_directories(net-lib PRIVATE
-               ${distribution_DIR}/include)
+        ${distribution_DIR}/include
+        ${distribution_DIR}/include/libavcodec
+        ${distribution_DIR}/include/libavdevice
+        ${distribution_DIR}/include/libavfilter
+        ${distribution_DIR}/include/libavformat
+        ${distribution_DIR}/include/libavutil
+        ${distribution_DIR}/include/libpostproc
+        ${distribution_DIR}/include/libswresample
+        ${distribution_DIR}/include/libswscale)
 
 target_link_libraries( # Specifies the target library.
-         net-lib
-         net-sdk
+        net-lib
+        net-sdk
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
