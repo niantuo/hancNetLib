@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <string>
 #include <hancnetsdk.h>
+#include "cJSON.h"
 
 #define CMS_LOGIN_CLIENT  1
 #define CMS_LOGIN_MOBI                            15 //手机端
@@ -22,7 +23,27 @@ typedef struct _msg_user_info  //登录信息
     char szCenterIP[50];    //预留
 } MSG_USER_INFO, *LPMSG_USER_INFO;
 
+/**
+ * 回调java 字符类型的数据。
+ * 一般是json 格式的字符串。必须定义好格式。
+ */
+void CallJavaWithString(JNIEnv *env,jobject  instance,char * message){
+    jclass  clz = env->GetObjectClass(instance);
+    jmethodID  callbackId = env->GetMethodID(clz,"callback","(Ljava/lang/String;)V");
+    jstring jMessage = env->NewStringUTF(message);
+    env->CallVoidMethod(instance,callbackId,jMessage);
+}
 
+
+/**
+ * 传值。回调java
+ */
+void CallJavaWithIntString(JNIEnv *env,jobject instance, int type,char *message){
+    jclass  clz = env->GetObjectClass(instance);
+    jmethodID  callbackId = env->GetMethodID(clz,"callback","(ILjava/lang/String;)V");
+    jstring jMessage = env->NewStringUTF(message);
+    env->CallVoidMethod(instance,callbackId,type,jMessage);
+}
 
 /**
  * 登陆到服务端，如何从返回的数据中拿到设备信息呢？
@@ -59,9 +80,12 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
         HancNetSDK_DataRelease(nSession);
     }
 
-   jclass  clz = env->GetObjectClass(instance);
-    jmethodID  callbackId = env->GetMethodID(clz,"callback","");
+    //生成json字符串，回调给前端。
+    cJSON *root =cJSON_CreateObject();
+    cJSON_AddItemToObject(root,"rc",cJSON_CreateNumber(12));
+    cJSON_AddItemToObject(root,"message",cJSON_CreateString("请求失败。"));
 
+    CallJavaWithIntString(env,instance,nSession,cJSON_Print(root));
     return nSession;
 }
 
@@ -97,4 +121,24 @@ Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_loginToServer(JNIEnv *en
 //    env->ReleaseStringUTFChars(ip_, ip);
 //    env->ReleaseStringUTFChars(username_, username);
 //    env->ReleaseStringUTFChars(password_, password);
+}
+
+/**
+ * 修改buffer中的值，Android端也同样会变化，用来传递视频信息。
+ */
+extern "C"
+JNIEXPORT jint JNICALL
+Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_startMediaPlay(JNIEnv *env,
+                                                                       jobject instance,
+                                                                       jobject buffer, jint len,
+                                                                       jint session) {
+
+    unsigned char * pBuffer=(unsigned char *)(env->GetDirectBufferAddress(buffer));
+    if (pBuffer==NULL){
+        CallJavaWithIntString(env, instance,-1, const_cast<char *>("buffer 未初始化。"));
+    } else{
+
+
+    }
+
 }

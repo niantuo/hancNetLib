@@ -21,7 +21,8 @@ set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs)
 add_library( # Sets the name of the library.
         net-lib
         SHARED
-        src/main/cpp/native-lib.cpp)
+        src/main/cpp/native-lib.cpp
+        src/main/cpp/cJSON.c)
 
  add_library(
          net-sdk
