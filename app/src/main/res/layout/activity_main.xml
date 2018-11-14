@@ -53,6 +53,12 @@
             android:layout_height="45dp"
             android:text="@string/btn_text_login" />
 
+        <Button
+            android:id="@+id/videoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/play" />
+
     </LinearLayout>
 
 

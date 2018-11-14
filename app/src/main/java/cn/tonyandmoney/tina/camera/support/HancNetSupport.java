@@ -1,5 +1,6 @@
 package cn.tonyandmoney.tina.camera.support;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.nio.ByteBuffer;
@@ -36,7 +37,6 @@ public class HancNetSupport {
     public native int loginToServer(String ip,int port,String username,String password);
 
     public native int startMediaPlay(Object buffer,int len,int session);
-
 
     public void callback(String message){
         Log.i(TAG,"JNI callback: "+message);

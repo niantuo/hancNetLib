@@ -1,5 +1,6 @@
 package cn.tonyandmoney.tina.camera;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -9,14 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sun.jna.NativeLong;
-
-import cn.tonyandmoney.tina.camera.constants.Constants;
 import cn.tonyandmoney.tina.camera.support.HancNetSupport;
-import cn.tonyandmoney.tina.camera.support.INetCallback;
-import cn.tonyandmoney.tina.camera.support.JNAHancNetLibrary;
-import cn.tonyandmoney.tina.camera.support.NativeLibrary;
-import cn.tonyandmoney.tina.camera.support.entity.MsgHeaderInfo;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
@@ -36,12 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mIpText = findViewById(R.id.serverIp);
         mPortText = findViewById(R.id.serverPort);
         Button mLoginBtn = findViewById(R.id.loginBtn);
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        mLoginBtn.setOnClickListener(v -> login());
         boolean result = HancNetSupport.getInstance().init();
         Log.i(TAG, String.format("init errCode:%s", result));
         if (result) {
@@ -49,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "SDK初始化失败。", Toast.LENGTH_LONG).show();
         }
+
+        findViewById(R.id.videoBtn).setOnClickListener(v -> {
+            startActivity(new Intent(this, VideoActivity.class));
+        });
     }
 
 
