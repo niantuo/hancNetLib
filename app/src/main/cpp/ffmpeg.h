@@ -11,6 +11,8 @@
 
 #include <android/bitmap.h>
 #include <android/log.h>
+#include <android/native_window.h>
+#include <android/native_window_jni.h>
 
 extern "C"{
 #include <libavcodec/avcodec.h>
@@ -25,21 +27,27 @@ class ffmpeg {
 
 public:
 
+    friend class Video;
+    int width;
+    int height;
+    ANativeWindow *window;
+
     ffmpeg();
     int initial(char * url, JNIEnv *e);
     int h264Decodec(jobject & bitmap);
     void fillPicture(AndroidBitmapInfo* info, void *pixels, AVPicture *rgbPicture);
     virtual ~ffmpeg();
-    friend class Video;
-    int width;
-    int height;
+
+
+    int render();
+
+    int renderPic();
 
 private:
     AVFormatContext *pFormatCtx;
     AVCodecContext *pCodecCtx;
     AVFrame *pFrame;
     AVPacket packet;
-    AVPicture picture;
     SwsContext * pSwsCtx;
     int videoStream;
 

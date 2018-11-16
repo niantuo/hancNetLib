@@ -23,7 +23,7 @@ public class FFmpegSurfaceView extends SurfaceView implements SurfaceHolder.Call
     private SurfaceHolder mHolder;
     private int width;
     private int height;
-    private boolean mPlayFlag = false;
+    private volatile boolean mPlayFlag = false;
 
     public native void play(Bitmap bitmap);
 

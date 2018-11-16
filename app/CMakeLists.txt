@@ -23,7 +23,7 @@ add_library( # Sets the name of the library.
         src/main/cpp/native-lib.cpp
         src/main/cpp/cJSON.c
         src/main/cpp/ffmpeg.cpp
-        src/main/cpp/Decoder.cpp)
+        src/main/cpp/FFmpegPlayer.cpp)
 
 add_library(
         net-sdk
@@ -122,4 +122,5 @@ target_link_libraries( # Specifies the target library.
         # included in the NDK.
         jnigraphics
         android
+        OpenSLES
         ${log-lib})

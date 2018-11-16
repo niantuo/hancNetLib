@@ -4,15 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <cn.tonyandmoney.tina.camera.support.view.FFmpegSurfaceView
-        android:id="@+id/videoView"
+    <cn.tonyandmoney.tina.camera.support.view.H264PlayerView
+        android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="250dp" />
-
-    <Button
-        android:id="@+id/btnPlay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/play" />
+        android:layout_height="260dp" />
 
 </LinearLayout>
