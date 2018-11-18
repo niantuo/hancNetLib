@@ -22,7 +22,6 @@ add_library( # Sets the name of the library.
         SHARED
         src/main/cpp/native-lib.cpp
         src/main/cpp/cJSON.c
-        src/main/cpp/ffmpeg.cpp
         src/main/cpp/FFmpegPlayer.cpp)
 
 add_library(
