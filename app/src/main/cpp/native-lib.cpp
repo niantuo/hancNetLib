@@ -1,27 +1,8 @@
 #include <jni.h>
 #include <string>
-#include <hancnetsdk.h>
 #include "cJSON.h"
+#include "JNIHancNet.h"
 
-#define CMS_LOGIN_CLIENT  1
-#define CMS_LOGIN_MOBI                            15 //手机端
-#define CMS_MSG_LOGIN                      9 //登录
-
-//通讯数据头，用于服务器间的数据通讯,所有向关设备，均使用此头进行通讯
-typedef struct _msg_head_info {
-    unsigned char nType;
-    unsigned char nFrom;
-    unsigned char nTo;
-    int nFromClientID;  //预留
-    int nToClientID;    //预留
-} MSG_HEAD_INFO, *LPMSG_HEAD_INFO;
-
-typedef struct _msg_user_info  //登录信息
-{
-    char szUser[100];
-    char szPass[100];
-    char szCenterIP[50];    //预留
-} MSG_USER_INFO, *LPMSG_USER_INFO;
 
 /**
  * 回调java 字符类型的数据。
@@ -75,10 +56,14 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
     int pRecvLen = 0;
     int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen,
                                                        5000, true);
+
+    MSG_RESPONSE_HEAD responseHead;
     //ppRecvBuf就是得到的设备列表
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
     }
+
+    memcpy(ppRecvBuf,&responseHead, sizeof(MSG_RESPONSE_HEAD));
 
     //生成json字符串，回调给前端。
     cJSON *root =cJSON_CreateObject();
