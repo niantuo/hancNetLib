@@ -94,6 +94,12 @@ void FFmpegPlayer::initial(JNIEnv *env, jobject surface) {
     pthread_mutex_unlock(&mutex);
 }
 
+void FFmpegPlayer::play(const char *url) {
+    pthread_t pthread;
+    pthread_create(&pthread, NULL, reinterpret_cast<void *(*)(void *)>(&readyPull), &url);
+
+}
+
 /**
  * 开始拉流。如果当前状态为播放准备，则无需重新拉取流信息。
  * @param url
@@ -109,6 +115,7 @@ int FFmpegPlayer::readyPull(const char *url) {
         isLoop = false;
         return 0;
     }
+    pthread_mutex_lock(&mutex);
     isLoop = true;
     AVDictionary *options = NULL;
     av_dict_set(&options, "rtsp_transport", "tcp", 0);
@@ -120,6 +127,7 @@ int FFmpegPlayer::readyPull(const char *url) {
     if (avformat_open_input(&pFormatCtx, url, NULL, &options) < 0) {
         LOGI("could not open input stream! ");
         onError(-12, "无法打开视频输入。");
+        pthread_mutex_unlock(&mutex);
         return -1;
     }
     LOGI("readyPull->time2 : %ld", getCurrentTime());
@@ -127,6 +135,7 @@ int FFmpegPlayer::readyPull(const char *url) {
     if (avformat_find_stream_info(pFormatCtx, NULL) < 0) {
         LOGI("could not find stream information.\n");
         onError(-13, "无法找到流信息。");
+        pthread_mutex_unlock(&mutex);
         return -2;
     }
 
@@ -145,6 +154,7 @@ int FFmpegPlayer::readyPull(const char *url) {
     if (videoIndex == -1) {
         LOGI("could find video stream.\n");
         onError(-14, "没有找到视频流信息。");
+        pthread_mutex_unlock(&mutex);
         return -3;
     }
 
@@ -153,6 +163,7 @@ int FFmpegPlayer::readyPull(const char *url) {
     avformat_close_input(&pFormatCtx);
     av_free(parameters);
     av_free(options);
+    pthread_mutex_unlock(&mutex);
     return 0;
 }
 

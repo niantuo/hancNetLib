@@ -44,6 +44,8 @@ public:
 
     ~FFmpegPlayer();
 
+    void play(const char* url);
+
     int pull(AVFormatContext *ctx,AVCodecParameters *parameters,int v_index,int a_index);
 
     void initial(JNIEnv*env,jobject surface);

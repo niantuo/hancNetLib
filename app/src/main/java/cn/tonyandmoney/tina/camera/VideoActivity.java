@@ -18,7 +18,7 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_layout);
         playerView = findViewById(R.id.player);
-        String url = "rtsp://192.168.0.101:554/user=admin&password=&channel=1&stream=0.sdp?real_stream";
+        String url = "rtsp://192.168.0.103:554/user=admin&password=&channel=1&stream=0.sdp?real_stream";
         playerView.setUrl(url);
 
     }
