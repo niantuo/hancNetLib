@@ -57,13 +57,13 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
     int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen,
                                                        5000, true);
 
-    MSG_RESPONSE_HEAD responseHead;
+    MSG_HEAD_INFO responseHead;
     //ppRecvBuf就是得到的设备列表
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
     }
 
-    memcpy(ppRecvBuf,&responseHead, sizeof(MSG_RESPONSE_HEAD));
+    memcpy(ppRecvBuf,&responseHead, sizeof(MSG_HEAD_INFO));
 
     //生成json字符串，回调给前端。
     cJSON *root =cJSON_CreateObject();
