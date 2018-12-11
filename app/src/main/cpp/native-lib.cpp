@@ -8,22 +8,22 @@
  * 回调java 字符类型的数据。
  * 一般是json 格式的字符串。必须定义好格式。
  */
-void CallJavaWithString(JNIEnv *env,jobject  instance,char * message){
-    jclass  clz = env->GetObjectClass(instance);
-    jmethodID  callbackId = env->GetMethodID(clz,"callback","(Ljava/lang/String;)V");
+void CallJavaWithString(JNIEnv *env, jobject instance, char *message) {
+    jclass clz = env->GetObjectClass(instance);
+    jmethodID callbackId = env->GetMethodID(clz, "callback", "(Ljava/lang/String;)V");
     jstring jMessage = env->NewStringUTF(message);
-    env->CallVoidMethod(instance,callbackId,jMessage);
+    env->CallVoidMethod(instance, callbackId, jMessage);
 }
 
 
 /**
  * 传值。回调java
  */
-void CallJavaWithIntString(JNIEnv *env,jobject instance, int type,char *message){
-    jclass  clz = env->GetObjectClass(instance);
-    jmethodID  callbackId = env->GetMethodID(clz,"callback","(ILjava/lang/String;)V");
+void CallJavaWithIntString(JNIEnv *env, jobject instance, int type, char *message) {
+    jclass clz = env->GetObjectClass(instance);
+    jmethodID callbackId = env->GetMethodID(clz, "callback", "(ILjava/lang/String;)V");
     jstring jMessage = env->NewStringUTF(message);
-    env->CallVoidMethod(instance,callbackId,type,jMessage);
+    env->CallVoidMethod(instance, callbackId, type, jMessage);
 }
 
 /**
@@ -38,8 +38,8 @@ extern "C"
 int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, char *pass) {
     MSG_HEAD_INFO head;
     memset(&head, 0, sizeof(MSG_HEAD_INFO));
-    head.nType = CMS_MSG_LOGIN;
-    head.nFrom = CMS_LOGIN_MOBI;
+    head.nType = CMS_MSG_LOGIN_EX;// CMS_MSG_LOGIN;
+    head.nFrom = CMS_LOGIN_CLIENT;// CMS_LOGIN_MOBI;
 
     MSG_USER_INFO user;
     memset(&user, 0, sizeof(MSG_USER_INFO));
@@ -58,19 +58,28 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
                                                        5000, true);
 
     MSG_RESPONSE_HEAD responseHead;
+    if (nSession < 0) {
+        //生成json字符串，回调给前端。
+        cJSON *root = cJSON_CreateObject();
+        cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(nSession));
+        cJSON_AddItemToObject(root, "message", cJSON_CreateString("登陸失敗。"));
+        CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
+        return nSession;
+    }
+
     //ppRecvBuf就是得到的设备列表
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
     }
 
-    memcpy(ppRecvBuf,&responseHead, sizeof(MSG_RESPONSE_HEAD));
+    memcpy(ppRecvBuf, &responseHead, sizeof(MSG_RESPONSE_HEAD));
 
     //生成json字符串，回调给前端。
-    cJSON *root =cJSON_CreateObject();
-    cJSON_AddItemToObject(root,"rc",cJSON_CreateNumber(12));
-    cJSON_AddItemToObject(root,"message",cJSON_CreateString("请求失败。"));
+    cJSON *root = cJSON_CreateObject();
+    cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(12));
+    cJSON_AddItemToObject(root, "message", cJSON_CreateString("请求失败。"));
 
-    CallJavaWithIntString(env,instance,nSession,cJSON_Print(root));
+    CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
     return nSession;
 }
 
@@ -100,7 +109,7 @@ Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_loginToServer(JNIEnv *en
     const char *password = env->GetStringUTFChars(password_, 0);
 
 
-    return login(env,instance,const_cast<char *>(ip), port, const_cast<char *>(username),
+    return login(env, instance, const_cast<char *>(ip), port, const_cast<char *>(username),
                  const_cast<char *>(password));
 
 //    env->ReleaseStringUTFChars(ip_, ip);
@@ -118,10 +127,10 @@ Java_cn_tonyandmoney_tina_camera_support_HancNetSupport_startMediaPlay(JNIEnv *e
                                                                        jobject buffer, jint len,
                                                                        jint session) {
 
-    unsigned char * pBuffer=(unsigned char *)(env->GetDirectBufferAddress(buffer));
-    if (pBuffer==NULL){
-        CallJavaWithIntString(env, instance,-1, const_cast<char *>("buffer 未初始化。"));
-    } else{
+    unsigned char *pBuffer = (unsigned char *) (env->GetDirectBufferAddress(buffer));
+    if (pBuffer == NULL) {
+        CallJavaWithIntString(env, instance, -1, const_cast<char *>("buffer 未初始化。"));
+    } else {
 
 
     }
