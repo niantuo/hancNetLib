@@ -54,8 +54,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
 
     char *ppRecvBuf = NULL;
     int pRecvLen = 0;
-    int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen,
-                                                       5000, true);
+    int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen, 15000, true);
 
     MSG_HEAD_INFO responseHead;
     //ppRecvBuf就是得到的设备列表
