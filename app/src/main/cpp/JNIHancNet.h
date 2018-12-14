@@ -26,8 +26,8 @@
 #define CMS_MSG_LOGIN_EX                   18 //登陆，短连接主要是用于获取数据
 #define CMS_MSG_SQLOPERATION               19 //执行SQL语句
 
-#define CMS_LOGIN_MOBI                            15 //手机端\
-#define CMS_LOGIN_CLIENT  1
+#define CMS_LOGIN_MOBI                            15 //手机端
+#define CMS_LOGIN_CLIENT                      1
 
 #include <hancnetsdk.h>
 

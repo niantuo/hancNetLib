@@ -38,8 +38,8 @@ extern "C"
 int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, char *pass) {
     MSG_HEAD_INFO head;
     memset(&head, 0, sizeof(MSG_HEAD_INFO));
-    head.nType = CMS_MSG_LOGIN;
-    head.nFrom = CMS_LOGIN_MOBI;
+    head.nType = CMS_MSG_LOGIN_EX;
+    head.nFrom = CMS_LOGIN_CLIENT;
 
     MSG_USER_INFO user;
     memset(&user, 0, sizeof(MSG_USER_INFO));
@@ -62,7 +62,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
         HancNetSDK_DataRelease(nSession);
     }
 
-    memcpy(ppRecvBuf,&responseHead, sizeof(MSG_HEAD_INFO));
+    memcpy(&responseHead,ppRecvBuf, sizeof(MSG_HEAD_INFO));
 
     //生成json字符串，回调给前端。
     cJSON *root =cJSON_CreateObject();
