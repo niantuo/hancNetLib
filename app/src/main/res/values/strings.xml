@@ -3,7 +3,7 @@
     <string name="hint_pwd_input">请输入密码</string>
     <string name="hint_input_username">请输入用户名</string>
     <string name="hint_input_ip">请输入服务器IP</string>
-    <string name="default_server_ip">127.0.0.1</string>
+    <string name="default_server_ip">182.92.168.177</string>
     <string name="hint_input_port">请输入服务器端口</string>
     <string name="default_server_port">3000</string>
     <string name="btn_text_login">登陆</string>

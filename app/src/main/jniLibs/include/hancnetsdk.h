@@ -16,6 +16,7 @@ extern "C"
     														 int nTimeOut = 3000 ,bool bGetData = false );
 	bool HancNetSDK_DataRelease(int nSession);
 
+	bool IntvClientRelease(int nSession);
 
 	//视频点播
 	int NVMS_MEDIA_PLAY(char* szURL ,int nParam ,void(*RealDataCallBackEx)(int nRealHandle, int nDataType, char *pBuffer,int dwBufSize,int nDeviceType , int dwUser), int dwUser);

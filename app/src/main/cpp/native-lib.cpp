@@ -38,8 +38,9 @@ extern "C"
 int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, char *pass) {
     MSG_HEAD_INFO head;
     memset(&head, 0, sizeof(MSG_HEAD_INFO));
-    head.nType = CMS_MSG_LOGIN_EX;// CMS_MSG_LOGIN;
-    head.nFrom = CMS_LOGIN_CLIENT;// CMS_LOGIN_MOBI;
+
+    head.nType = CMS_MSG_LOGIN_EX;
+    head.nFrom = CMS_LOGIN_CLIENT;
 
     MSG_USER_INFO user;
     memset(&user, 0, sizeof(MSG_USER_INFO));
@@ -54,33 +55,26 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
 
     char *ppRecvBuf = NULL;
     int pRecvLen = 0;
-    int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen,
-                                                       5000, true);
+    int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen, 15000, true);
 
-    MSG_RESPONSE_HEAD responseHead;
-    if (nSession < 0) {
-        //生成json字符串，回调给前端。
-        cJSON *root = cJSON_CreateObject();
-        cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(nSession));
-        cJSON_AddItemToObject(root, "message", cJSON_CreateString("登陸失敗。"));
-        CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
-        return nSession;
-    }
-
+    MSG_HEAD_INFO responseHead;
     //ppRecvBuf就是得到的设备列表
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
 
     }
 
-    memcpy(ppRecvBuf, &responseHead, sizeof(MSG_RESPONSE_HEAD));
+    if (nSession>-1&&ppRecvBuf!=NULL){
+        memcpy(&responseHead,ppRecvBuf, sizeof(MSG_HEAD_INFO));
 
-    //生成json字符串，回调给前端。
-    cJSON *root = cJSON_CreateObject();
-    cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(12));
-    cJSON_AddItemToObject(root, "message", cJSON_CreateString("请求失败。"));
+        //生成json字符串，回调给前端。
+        cJSON *root = cJSON_CreateObject();
+        cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(12));
+        cJSON_AddItemToObject(root, "message", cJSON_CreateString("请求失败。"));
 
-    CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
+        CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
+    }
+
     return nSession;
 }
 
