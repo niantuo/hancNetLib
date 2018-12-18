@@ -70,6 +70,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
     //ppRecvBuf就是得到的设备列表
     if (nSession > 0) {
         HancNetSDK_DataRelease(nSession);
+
     }
 
     memcpy(ppRecvBuf, &responseHead, sizeof(MSG_RESPONSE_HEAD));
