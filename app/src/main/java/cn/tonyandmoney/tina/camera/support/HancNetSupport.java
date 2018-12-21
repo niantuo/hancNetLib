@@ -44,7 +44,7 @@ public class HancNetSupport {
 
 
     public void callback(int value,String message){
-
+        Log.i(TAG,String.format("callback type:%s content:%s",value,message));
     }
 
 }

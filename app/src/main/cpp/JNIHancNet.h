@@ -170,8 +170,7 @@ typedef struct _msg_sql_info  //执行SQL语句
 //查询返回的结果记录表，
 typedef struct _msg_response_head {
     int nRecordSize;//数据个数
-
-    unsigned char *byTableType;//表类型
+    unsigned char byTableType;//表类型
 
 } MSG_RESPONSE_HEAD, *LPMSG_RESPONSE_HEAD;
 

@@ -57,24 +57,36 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
     int pRecvLen = 0;
     int nSession = HancNetSDK_CommunicateWithServerTcp(ip, port, buf, bufSize, &ppRecvBuf, pRecvLen, 15000, true);
 
-    MSG_HEAD_INFO responseHead;
-    //ppRecvBuf就是得到的设备列表
-    if (nSession > 0) {
-        HancNetSDK_DataRelease(nSession);
 
-    }
+    //ppRecvBuf就是得到的设备列表
+
+    MSG_RESPONSE_HEAD response_head;
 
     if (nSession>-1&&ppRecvBuf!=NULL){
-        memcpy(&responseHead,ppRecvBuf, sizeof(MSG_HEAD_INFO));
+        memcpy(&response_head,ppRecvBuf, sizeof(MSG_RESPONSE_HEAD));
 
+        MSG_USER_BASE userBase;
+        memcpy(&userBase,ppRecvBuf+ sizeof(MSG_RESPONSE_HEAD), sizeof(MSG_USER_BASE));
         //生成json字符串，回调给前端。
         cJSON *root = cJSON_CreateObject();
-        cJSON_AddItemToObject(root, "rc", cJSON_CreateNumber(12));
-        cJSON_AddItemToObject(root, "message", cJSON_CreateString("请求失败。"));
-
+        cJSON_AddItemToObject(root, "nId", cJSON_CreateNumber(userBase.nID));
+        cJSON_AddItemToObject(root, "username", cJSON_CreateString(userBase.szUser));
+        cJSON_AddItemToObject(root,"password",cJSON_CreateString(userBase.szPass));
+        cJSON_AddItemToObject(root,"regionId",cJSON_CreateNumber(userBase.nRegionID));
+        cJSON_AddItemToObject(root,"nPriority",cJSON_CreateNumber(userBase.nPriority));
+        cJSON_AddItemToObject(root,"nOperateRight",cJSON_CreateNumber(userBase.nOperateRight));
+        cJSON_AddItemToObject(root,"nAlarmRight",cJSON_CreateNumber(userBase.nAlarmRight));
+        cJSON_AddItemToObject(root,"nLoginTime",cJSON_CreateNumber(userBase.nLoginTime));
+        cJSON_AddItemToObject(root,"bUseDetailRight",cJSON_CreateBool(userBase.bUseDetailRight));
+        cJSON_AddItemToObject(root,"nUserGroupId",cJSON_CreateNumber(userBase.nUserGroupID));
+        cJSON_AddItemToObject(root,"nLoginFrom",cJSON_CreateNumber(userBase.nLoginFrom));
+        cJSON_AddItemToObject(root,"nDataBaseType",cJSON_CreateNumber(userBase.nDataBaseType));
+        cJSON_AddItemToObject(root,"nGroupId",cJSON_CreateNumber(userBase.nGroupID));
         CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
     }
-
+    if (nSession > 0) {
+        HancNetSDK_DataRelease(nSession);
+    }
     return nSession;
 }
 
