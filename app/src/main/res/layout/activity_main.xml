@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_input_username"
+            android:text="@string/default_username"
             android:inputType="text"
             android:padding="10dp" />
 
@@ -43,6 +44,7 @@
             android:id="@+id/userPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/default_pwd"
             android:hint="@string/hint_pwd_input"
             android:inputType="text"
             android:padding="10dp" />

@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import cn.tonyandmoney.tina.camera.support.HancNetSupport;
 
+/**
+ * 服务器IP 182.92.168.177
+ */
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
 

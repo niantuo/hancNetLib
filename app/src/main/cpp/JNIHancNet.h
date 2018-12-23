@@ -28,7 +28,102 @@
 
 
 #define CMS_LOGIN_MOBI                            15 //手机端
-#define CMS_LOGIN_CLIENT                      1
+#define CMS_LOGIN_CLIENT                        1
+
+#define REGIONTABLE        1   //区域表
+#define RECORDTABLE        2   //视频设备表
+#define VIDEOCHANTABLE     3   //视频通道表
+#define PRESETTABLE        4   //预置位列表
+#define UNIONSOURTABLE     5  //报警源
+#define UNIONCHANTABLE     6  //报警联动
+#define UNIONPLANTABLE	   7  //报警计划
+#define DMATRIXSVRTABLE          8  //矩阵设备
+#define DMATRIXSCREENTABLE       9  //矩阵输出
+#define MAPTABLE                  10  //电子地图
+#define NODEMAPTABLE              11  //地图节点
+#define USERGROUPTABLE            12  //用户组
+#define USERTABLE                 13  //用户
+#define USERGROUPRIGHTTABLE		  14 //用户组通道权限
+#define TIMEPLANTABLE             15  //计划模版
+#define RECORDPLANTABLE           16 //录象计划
+#define EVENTLOGTABLE             17  //报警日志
+#define OPERATELOGTABLE           18  //操作日志
+#define USERVIDEOGROUP            19 //用户自定义视频分组,20150702
+#define DEVGROUPTABLE			  20 //系统分组
+#define DEVGROUPCHANTABLE		  21 //系统组通道
+#define INTVSVRTABLE			  22 //智能分析服务器
+#define INTVCHANTABLE			  23 //智能分析通道
+#define SERVERTABLE               24 //服务器
+#define DETECTRESULTTABLE         25 //诊断详细信息
+#define PERSONTABLE               26 //人员信息表
+#define USERVIDEOGROUPCHAN        27 //用户自定义视频分组,20150702
+#define DEVICECONFIG              28 //设备配置
+
+
+
+//数据库操作
+#define DATAADD          1   //增
+#define DATADEL          2   //删
+#define DATAMODIFY       3   //改
+#define DATAQUERY        4   //查
+#define DATAQUERYMYSELF        5//自定义查询
+#define DATAQUERYMYSELFEX        6//自定义查询
+
+//节点类型
+#define NORECORD		1
+#define ALL_NODE			    0//不考虑ID获取表全部数据
+#define CURRENT_NODE			1//当前所在节点
+#define PARENT_NODE			    2//父节点
+#define CALLSUB_NODE			3//从父节点向下找1
+
+#define OPERATELOGIN        1 //登录
+#define OPERATELOGOUT       2 //注销
+#define OPERATEDISAPPEAR    3 //非正常退出
+#define OPERATETRYLOGIN     4 //试图登陆
+#define OPERATELOGINFAILD   5 //登陆失败
+#define OPERATEVIDEOPLAY   6 //访问视频
+#define OPERATEPTZCTRL     7 //云台控制
+#define OPERATEVIDEOCTRL   8 //画面控制
+#define OPERATEREPLAY      9 //回放录像
+#define OPERATDOWNRECORD   10 //下载录像
+#define OPERATESPEEKS      11 //语音对讲
+#define OPERATELISTEN      12 //声音监听
+#define OPERATESWITCH      13 //开关开
+#define OPERATEOPERATEDOOR 14 //门操作
+#define OPERATEDOORSETUP   15 //设置门
+#define OPERATEREMOTESET    16 //远程配置
+#define OPERATEVIEWALARMLOG 17 //查看报警记录
+#define OPERATEVIEWOPERATELOG 18 //查看操作记录
+#define OPERATEVIEWDATALOG    19 //查看历史数据
+#define OPERATMATRIXVIEW      20 //矩阵点播
+#define OPERATMATRIXAUTO      21 //矩阵自动播放
+#define OPERATMATRIXARRAY     22 //矩阵布局
+#define OPERATMANAGE          23 //系统管理
+
+//操作
+#define OPERATEERROR         -1 //异常
+#define OPERATEOPEN        0 //打开
+#define OPERATEOFF         1 //关闭
+#define OPERATEPLAN        2 //计划
+
+
+//通道类型定义
+#define TYPEOFALL          -1 //未指定
+#define TYPEOFVIDEOCHAN     0
+#define TYPEOFALARMCHAN     1
+#define TYPEOFALARMOUT      2
+#define TYPEOFSENSORCHAN    3
+#define TYPEOFDOORCHAN      4
+
+//设备类型
+#define TYPEOFCAMERA     0
+#define TYPEOFDVR        1
+#define TYPEOFDATADEV      2
+#define TYPEOFFIBER        3
+
+
+#define USEUPDATE 1
+#define USEUPDATEFORCVR 1
 
 
 #include <hancnetsdk.h>
@@ -76,37 +171,24 @@ typedef struct _msg_changroup_base {
 //系统服务器
 
 typedef struct _msg_systemsrv_base {
-
-    int nID;
-
-    char szIP[16];
-
-    int nPort;
-    int nPort2;
-    int nServerType;
-
-    char szSerial[40];      //序列号
-
-    char szUser[20];
-
-    char szPass[20];
-
-    int nFactoryType;
-
-    int nRegionID;
-
-    int nState;//状态
-
-    int nAuthChans;
-
-    int nLinkChans;
-
-    int nLinkUsers;
-    char szDescription[100];
-
-    unsigned int unUpdateTime;
-
-    long lUserID;
+	int  nID;
+	char szIP[16];
+	int  nPort;
+#if USEUPDATE
+	int  nPort2;
+#endif
+	int  nServerType;
+	char szSerial[40];      //序列号
+	char szUser[20];
+	char szPass[20];
+	int  nFactoryType ;
+	int  nRegionID;
+	int  nState ;//状态
+	int  nEmergencyStatus ;//应急存储是否在线
+#if USEUPDATE
+	char szDescription[100] ;
+	unsigned int unUpdateTime;
+#endif
 
 } MSG_SYSTEMSRV_BASE, *LPMSG_SYSTEMSRV_BASE;
 
@@ -136,7 +218,7 @@ typedef struct _msg_user_base {
     char szUser[16];        //用户名
     char szPass[16];        //用户密码
     int nRegionID;            //区域内部编号
-    short nPriority;        //级别
+	unsigned char nPriority;        //级别
     int nOperateRight;    //操作权限
     int nAlarmRight;        //接警权限
     unsigned int nLoginTime;      //记录登陆时间，用于查询
@@ -144,7 +226,6 @@ typedef struct _msg_user_base {
     int nUserGroupID;
     int nLoginFrom;
     int nDataBaseType;
-
     int nGroupID;
 } MSG_USER_BASE, *LPMSG_USER_BASE;
 
@@ -171,27 +252,83 @@ typedef struct _msg_sql_info  //执行SQL语句
 typedef struct _msg_response_head {
     int nRecordSize;//数据个数
     unsigned char byTableType;//表类型
-
 } MSG_RESPONSE_HEAD, *LPMSG_RESPONSE_HEAD;
+
+
+//视频设备信息
+typedef struct _msg_recorddevice_base
+{
+    unsigned long  nID;			    //内部编号
+    char szName[50];        //服务器名称
+    char szSerial[40];      //序列号
+    char   nHardType;			//硬件类型，0，IPC，1，DVS，2，采集服务器，3，报警设备
+    char  nLinkType ;        //联网方式
+    char  nServerType;		//服务器类型0:海康 1：大华
+    char szIP[50];	        //服务器地址/域名
+    int  nPort;		        //服务器端口
+    char szUser[20];		//用户名
+    char szPass[20];		//用户密码
+
+    char szRemark[200];		//备注
+    int    nRegionID;			//区域内部编号
+
+    short  nStorePos ;
+    short  nMatixPos ;
+    char   nSetAlarm ;
+
+    unsigned int unIndex ;
+    unsigned int unUpdateTime; //更新时间   -- updatetime
+
+
+}MSG_RECORDDEVICE_BASE, * LPMSG_RECORDDEVICE_BASE;
+
+//视频通道节点
+typedef struct _msg_video_record_base
+{
+    unsigned long  nID ;
+    int   nChan;		    //通道号
+    char  szName[40];	    //节点文本
+    int   nStorePos;		//存储中的通道索引
+    int   nDeviceID ;	    //父节点ID
+    int   nMatrixPos;		//矩阵索引号
+    char  nSetAlarm ;
+    char  nLevel;		//报警级别
+    int   nType;        //通道类型
+    char  szPass[20];
+    bool  bDuplex ;
+    int nParam1;
+    int nParam2;
+    int nParam3;
+    int nParam4;
+    char szRemark[100];		//备注
+	unsigned int unUpdateTime; //更新时间   -- updatetime
+    char szSerial[40];
+    char szIP[20];
+	char szUser[20];
+	int  nPort ;//视频通道的情况下nParam1表示设备类型，nParam2表示是否报警
+
+    unsigned int unIndex ;
+    unsigned int  nStatus ;
+}MSG_VIDEO_RECORD_BASE, * LPMSG_VIDEO_RECORD_BASE;
 
 //表枚举
 typedef enum _ENUM_DATABASE_TABLE {
 
     REGION_TABLE = 1,//区域表
 
-    DEVICE_TABLE,  //设备列表
+    DEVICE_TABLE=2,  //设备列表
 
-    CHAN_TABLE,        //通道表
+    CHAN_TABLE=3,        //通道表
 
-    GROUP_TABLE,
+    GROUP_TABLE=4,
 
-    GROUP_CHAN_TABLE,
+    GROUP_CHAN_TABLE=5,
 
-    USERGROUP_TABLE,
+    USERGROUP_TABLE=6,
 
-    USER_TABLE,
+    USER_TABLE=7,
 
-    ALARMGROUP_TABLE,
+    ALARMGROUP_TABLE=8,
 
     ALARMGROUPCHAN_TABLE,
 
@@ -201,7 +338,7 @@ typedef enum _ENUM_DATABASE_TABLE {
 
     ALARMGROUPNOTIFY_TABLE,
 
-    SERVER_TABLE,
+    SERVER_TABLE=13,
 
     SERVERCHAN_TABLE,
 
