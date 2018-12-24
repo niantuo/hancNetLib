@@ -7,87 +7,87 @@
 #define MAXSTATECHAN  32
 #define MAXDATAS      16
 
-//¶¨Òåºê
-//Êı¾İ¿â±íºê¶¨Òå
-#define REGIONTABLE        1   //ÇøÓò±í
-#define RECORDTABLE        2   //ÊÓÆµÉè±¸±í
-#define VIDEOCHANTABLE     3   //ÊÓÆµÍ¨µÀ±í
-#define PRESETTABLE        4   //Ô¤ÖÃÎ»ÁĞ±í
+//å®šä¹‰å®
+//æ•°æ®åº“è¡¨å®å®šä¹‰
+#define REGIONTABLE        1   //åŒºåŸŸè¡¨
+#define RECORDTABLE        2   //è§†é¢‘è®¾å¤‡è¡¨
+#define VIDEOCHANTABLE     3   //è§†é¢‘é€šé“è¡¨
+#define PRESETTABLE        4   //é¢„ç½®ä½åˆ—è¡¨
 
-#define UNIONSOURTABLE     5  //±¨¾¯Ô´
-#define UNIONCHANTABLE     6  //±¨¾¯Áª¶¯
-#define UNIONPLANTABLE	   7  //±¨¾¯¼Æ»®
+#define UNIONSOURTABLE     5  //æŠ¥è­¦æº
+#define UNIONCHANTABLE     6  //æŠ¥è­¦è”åŠ¨
+#define UNIONPLANTABLE	   7  //æŠ¥è­¦è®¡åˆ’
 
-#define DMATRIXSVRTABLE          8  //¾ØÕóÉè±¸
-#define DMATRIXSCREENTABLE       9  //¾ØÕóÊä³ö
+#define DMATRIXSVRTABLE          8  //çŸ©é˜µè®¾å¤‡
+#define DMATRIXSCREENTABLE       9  //çŸ©é˜µè¾“å‡º
 
-#define MAPTABLE                  10  //µç×ÓµØÍ¼
-#define NODEMAPTABLE              11  //µØÍ¼½Úµã
+#define MAPTABLE                  10  //ç”µå­åœ°å›¾
+#define NODEMAPTABLE              11  //åœ°å›¾èŠ‚ç‚¹
 
-#define USERGROUPTABLE            12  //ÓÃ»§×é
-#define USERTABLE                 13  //ÓÃ»§
-#define USERGROUPRIGHTTABLE		  14 //ÓÃ»§×éÍ¨µÀÈ¨ÏŞ
+#define USERGROUPTABLE            12  //ç”¨æˆ·ç»„
+#define USERTABLE                 13  //ç”¨æˆ·
+#define USERGROUPRIGHTTABLE		  14 //ç”¨æˆ·ç»„é€šé“æƒé™
 
-#define TIMEPLANTABLE             15  //¼Æ»®Ä£°æ
-#define RECORDPLANTABLE           16 //Â¼Ïó¼Æ»®
+#define TIMEPLANTABLE             15  //è®¡åˆ’æ¨¡ç‰ˆ
+#define RECORDPLANTABLE           16 //å½•è±¡è®¡åˆ’
 
-#define EVENTLOGTABLE             17  //±¨¾¯ÈÕÖ¾
-#define OPERATELOGTABLE           18  //²Ù×÷ÈÕÖ¾
+#define EVENTLOGTABLE             17  //æŠ¥è­¦æ—¥å¿—
+#define OPERATELOGTABLE           18  //æ“ä½œæ—¥å¿—
 
-#define USERVIDEOGROUP            19 //ÓÃ»§×Ô¶¨ÒåÊÓÆµ·Ö×é,20150702
-
-
-#define DEVGROUPTABLE			  20 //ÏµÍ³·Ö×é
-#define DEVGROUPCHANTABLE		  21 //ÏµÍ³×éÍ¨µÀ
-
-#define INTVSVRTABLE			  22 //ÖÇÄÜ·ÖÎö·şÎñÆ÷
-#define INTVCHANTABLE			  23 //ÖÇÄÜ·ÖÎöÍ¨µÀ
-
-#define SERVERTABLE               24 //·şÎñÆ÷
-
-#define DETECTRESULTTABLE         25 //Õï¶ÏÏêÏ¸ĞÅÏ¢
-
-#define PERSONTABLE               26 //ÈËÔ±ĞÅÏ¢±í
-
-#define USERVIDEOGROUPCHAN        27 //ÓÃ»§×Ô¶¨ÒåÊÓÆµ·Ö×é,20150702
+#define USERVIDEOGROUP            19 //ç”¨æˆ·è‡ªå®šä¹‰è§†é¢‘åˆ†ç»„,20150702
 
 
-#define DEVICECONFIG              28 //Éè±¸ÅäÖÃ
+#define DEVGROUPTABLE			  20 //ç³»ç»Ÿåˆ†ç»„
+#define DEVGROUPCHANTABLE		  21 //ç³»ç»Ÿç»„é€šé“
+
+#define INTVSVRTABLE			  22 //æ™ºèƒ½åˆ†ææœåŠ¡å™¨
+#define INTVCHANTABLE			  23 //æ™ºèƒ½åˆ†æé€šé“
+
+#define SERVERTABLE               24 //æœåŠ¡å™¨
+
+#define DETECTRESULTTABLE         25 //è¯Šæ–­è¯¦ç»†ä¿¡æ¯
+
+#define PERSONTABLE               26 //äººå‘˜ä¿¡æ¯è¡¨
+
+#define USERVIDEOGROUPCHAN        27 //ç”¨æˆ·è‡ªå®šä¹‰è§†é¢‘åˆ†ç»„,20150702
+
+
+#define DEVICECONFIG              28 //è®¾å¤‡é…ç½®
 
 
 
-//Êı¾İ¿â²Ù×÷
-#define DATAADD          1   //Ôö
-#define DATADEL          2   //É¾
-#define DATAMODIFY       3   //¸Ä
-#define DATAQUERY        4   //²é
-#define DATAQUERYMYSELF        5//×Ô¶¨Òå²éÑ¯
-#define DATAQUERYMYSELFEX        6//×Ô¶¨Òå²éÑ¯
+//æ•°æ®åº“æ“ä½œ
+#define DATAADD          1   //å¢
+#define DATADEL          2   //åˆ 
+#define DATAMODIFY       3   //æ”¹
+#define DATAQUERY        4   //æŸ¥
+#define DATAQUERYMYSELF        5//è‡ªå®šä¹‰æŸ¥è¯¢
+#define DATAQUERYMYSELFEX        6//è‡ªå®šä¹‰æŸ¥è¯¢
 
-//½ÚµãÀàĞÍ
+//èŠ‚ç‚¹ç±»å‹
 #define NORECORD		1
 
-#define ALL_NODE			    0//²»¿¼ÂÇID»ñÈ¡±íÈ«²¿Êı¾İ
-#define CURRENT_NODE			1//µ±Ç°ËùÔÚ½Úµã
-#define PARENT_NODE			    2//¸¸½Úµã
-#define CALLSUB_NODE			3//´Ó¸¸½ÚµãÏòÏÂÕÒ
+#define ALL_NODE			    0//ä¸è€ƒè™‘IDè·å–è¡¨å…¨éƒ¨æ•°æ®
+#define CURRENT_NODE			1//å½“å‰æ‰€åœ¨èŠ‚ç‚¹
+#define PARENT_NODE			    2//çˆ¶èŠ‚ç‚¹
+#define CALLSUB_NODE			3//ä»çˆ¶èŠ‚ç‚¹å‘ä¸‹æ‰¾
 
 typedef enum _UPDATE_DATA_TYPE
 {
-	UPDATE_DEFENCE = 1,  //¸üĞÂ·ÀÇø
-	UPDATE_GROUP,        //¸üĞÂ·Ö×é
-	UPDATE_BASE,         //ÇøÓòÉè±¸Í¨µÀ
-	UPDATE_SERVER,       //·şÎñÆ÷
-	UPDATE_RULE,         //¹æÔò
-	UPDATE_RECORD,       //Â¼ÏóÅäÖÃ
+	UPDATE_DEFENCE = 1,  //æ›´æ–°é˜²åŒº
+	UPDATE_GROUP,        //æ›´æ–°åˆ†ç»„
+	UPDATE_BASE,         //åŒºåŸŸè®¾å¤‡é€šé“
+	UPDATE_SERVER,       //æœåŠ¡å™¨
+	UPDATE_RULE,         //è§„åˆ™
+	UPDATE_RECORD,       //å½•è±¡é…ç½®
 }UPDATE_DATA_TYPE;
 
 
 typedef enum _ENUM_DATABASE_TABLE
 {
-	REGION_TABLE = 1,//ÇøÓò±í
-	DEVICE_TABLE ,  //Éè±¸ÁĞ±í
-	CHAN_TABLE,        //Í¨µÀ±í
+	REGION_TABLE = 1,//åŒºåŸŸè¡¨
+	DEVICE_TABLE ,  //è®¾å¤‡åˆ—è¡¨
+	CHAN_TABLE,        //é€šé“è¡¨
 	GROUP_TABLE,
 	GROUP_CHAN_TABLE,
 	USERGROUP_TABLE,
@@ -108,109 +108,109 @@ typedef enum _ENUM_DATABASE_TABLE
 
 typedef enum _NOTIFY_TYPE
 {
-	NOTIFY_CLIENT = 0,  //¿Í»§¶Ë
-	NOTIFY_APP,       //ÊÖ»úapp
-	NOTIFY_CMS,       //ÉÏ¼¶Æ½Ì¨
-	NOTIFY_UNIONSVR,       //Áª¶¯·şÎñ
-	NOTIFY_INTVSVR,       //ÖÇÄÜ·şÎñ
-	NOTIFY_MSG,       //¶ÌĞÅ
-	NOTIFY_MAIL,      //ÓÊ¼ş
+	NOTIFY_CLIENT = 0,  //å®¢æˆ·ç«¯
+	NOTIFY_APP,       //æ‰‹æœºapp
+	NOTIFY_CMS,       //ä¸Šçº§å¹³å°
+	NOTIFY_UNIONSVR,       //è”åŠ¨æœåŠ¡
+	NOTIFY_INTVSVR,       //æ™ºèƒ½æœåŠ¡
+	NOTIFY_MSG,       //çŸ­ä¿¡
+	NOTIFY_MAIL,      //é‚®ä»¶
 }NOTIFY_TYPE;
 
 
 typedef enum _ALARMGROUP_NOTIFY
 {
-	NOTIFY_ALLCLIENT = 0xff,  //ËùÓĞ
-	NOTIFY_REGION = 1,  //Í¨Öª±¾¼¶ÇøÓò
-	NOTIFY_PARENT,        //Í¨ÖªÉÏ¼¶ÇøÓò
+	NOTIFY_ALLCLIENT = 0xff,  //æ‰€æœ‰
+	NOTIFY_REGION = 1,  //é€šçŸ¥æœ¬çº§åŒºåŸŸ
+	NOTIFY_PARENT,        //é€šçŸ¥ä¸Šçº§åŒºåŸŸ
 	NOTIFY_GROUP_CLIENT,
 	NOTIFY_MOBIAPP,
 	NOTIFY_EMAIL,
 	NOTIFY_MESSAGE,
 }ALARMGROUP_NOTIFY;
 
-//È¨ÏŞ
+//æƒé™
 typedef enum _USERGROUP_RIGHT
 {
-	RIGHT_LIVE = 0,  //ÊµÊ±
-	RIGHT_RECORD,    //»Ø·Å
-	RIGHT_PTZ,       //ÔÆÌ¨
-	RIGHT_MATRIX,    //¾ØÕó
-	RIGHT_LOG,       //ÈÕÖ¾
-	RIGHT_OPERATION, //ÔËÎ¬
-	RIGHT_TIME,      //Ê±¼ä¿ØÖÆ
+	RIGHT_LIVE = 0,  //å®æ—¶
+	RIGHT_RECORD,    //å›æ”¾
+	RIGHT_PTZ,       //äº‘å°
+	RIGHT_MATRIX,    //çŸ©é˜µ
+	RIGHT_LOG,       //æ—¥å¿—
+	RIGHT_OPERATION, //è¿ç»´
+	RIGHT_TIME,      //æ—¶é—´æ§åˆ¶
 	RIGHT_MAP,        
 }USERGROUP_RIGHT;
 
-//²Ù×÷ÈÕÖ¾ºê¶¨Òå20150808
+//æ“ä½œæ—¥å¿—å®å®šä¹‰20150808
 
 typedef enum _OPERATION_TYPE_
 {
-	OP_LOGIN  =  1,     //µÇÂ¼
-	OP_LOGOUT ,         //×¢Ïú
-	OP_LOGOUT_ABNORMAL, //·ÇÕı³£ÍË³ö
-	OP_LOGIN_TRY,       //ÊÔÍ¼µÇÂ½
-	OP_LOGIN_FAILD,     //µÇÂ½Ê§°Ü
-	OP_LIVE,            //·ÃÎÊÊÓÆµ
-	OP_LIVE_STOP,       //¹Ø±ÕÊÓÆµ
-	OP_PLAYBACK,        //·ÃÎÊÂ¼Ïñ
-	OP_PLAYBACK_STOP,   //¹Ø±ÕÊÓÆµ
-	OP_PTZ_START,       //ÔÆÌ¨¿ØÖÆ
-	OP_PTZ_STOP,        //ÔÆÌ¨¿ØÖÆÍ£
-	OP_SPEEK_START,     //Æô¶¯¶Ô½²
-	OP_SPEEK_STOP,      //Í£Ö¹¶Ô½²
-	OP_REMOTE_DOOROPEN,      //Ô¶³Ì¿ªÃÅ
-	OP_REMOTE_DOORCLOSE,      //Ô¶³Ì¹ØÃÅ
+	OP_LOGIN  =  1,     //ç™»å½•
+	OP_LOGOUT ,         //æ³¨é”€
+	OP_LOGOUT_ABNORMAL, //éæ­£å¸¸é€€å‡º
+	OP_LOGIN_TRY,       //è¯•å›¾ç™»é™†
+	OP_LOGIN_FAILD,     //ç™»é™†å¤±è´¥
+	OP_LIVE,            //è®¿é—®è§†é¢‘
+	OP_LIVE_STOP,       //å…³é—­è§†é¢‘
+	OP_PLAYBACK,        //è®¿é—®å½•åƒ
+	OP_PLAYBACK_STOP,   //å…³é—­è§†é¢‘
+	OP_PTZ_START,       //äº‘å°æ§åˆ¶
+	OP_PTZ_STOP,        //äº‘å°æ§åˆ¶åœ
+	OP_SPEEK_START,     //å¯åŠ¨å¯¹è®²
+	OP_SPEEK_STOP,      //åœæ­¢å¯¹è®²
+	OP_REMOTE_DOOROPEN,      //è¿œç¨‹å¼€é—¨
+	OP_REMOTE_DOORCLOSE,      //è¿œç¨‹å…³é—¨
 }OPERATION_TYPE;
 
-#define OPERATELOGIN        1 //µÇÂ¼
-#define OPERATELOGOUT       2 //×¢Ïú
-#define OPERATEDISAPPEAR    3 //·ÇÕı³£ÍË³ö
-#define OPERATETRYLOGIN     4 //ÊÔÍ¼µÇÂ½
-#define OPERATELOGINFAILD   5 //µÇÂ½Ê§°Ü
-#define OPERATEVIDEOPLAY   6 //·ÃÎÊÊÓÆµ
-#define OPERATEPTZCTRL     7 //ÔÆÌ¨¿ØÖÆ
-#define OPERATEVIDEOCTRL   8 //»­Ãæ¿ØÖÆ
+#define OPERATELOGIN        1 //ç™»å½•
+#define OPERATELOGOUT       2 //æ³¨é”€
+#define OPERATEDISAPPEAR    3 //éæ­£å¸¸é€€å‡º
+#define OPERATETRYLOGIN     4 //è¯•å›¾ç™»é™†
+#define OPERATELOGINFAILD   5 //ç™»é™†å¤±è´¥
+#define OPERATEVIDEOPLAY   6 //è®¿é—®è§†é¢‘
+#define OPERATEPTZCTRL     7 //äº‘å°æ§åˆ¶
+#define OPERATEVIDEOCTRL   8 //ç”»é¢æ§åˆ¶
 
-#define OPERATEREPLAY      9 //»Ø·ÅÂ¼Ïñ
-#define OPERATDOWNRECORD   10 //ÏÂÔØÂ¼Ïñ
+#define OPERATEREPLAY      9 //å›æ”¾å½•åƒ
+#define OPERATDOWNRECORD   10 //ä¸‹è½½å½•åƒ
 
-#define OPERATESPEEKS      11 //ÓïÒô¶Ô½²
-#define OPERATELISTEN      12 //ÉùÒô¼àÌı
-#define OPERATESWITCH      13 //¿ª¹Ø¿ª
+#define OPERATESPEEKS      11 //è¯­éŸ³å¯¹è®²
+#define OPERATELISTEN      12 //å£°éŸ³ç›‘å¬
+#define OPERATESWITCH      13 //å¼€å…³å¼€
 
-#define OPERATEOPERATEDOOR 14 //ÃÅ²Ù×÷
-#define OPERATEDOORSETUP   15 //ÉèÖÃÃÅ
+#define OPERATEOPERATEDOOR 14 //é—¨æ“ä½œ
+#define OPERATEDOORSETUP   15 //è®¾ç½®é—¨
 
-#define OPERATEREMOTESET    16 //Ô¶³ÌÅäÖÃ
-#define OPERATEVIEWALARMLOG 17 //²é¿´±¨¾¯¼ÇÂ¼
-#define OPERATEVIEWOPERATELOG 18 //²é¿´²Ù×÷¼ÇÂ¼
+#define OPERATEREMOTESET    16 //è¿œç¨‹é…ç½®
+#define OPERATEVIEWALARMLOG 17 //æŸ¥çœ‹æŠ¥è­¦è®°å½•
+#define OPERATEVIEWOPERATELOG 18 //æŸ¥çœ‹æ“ä½œè®°å½•
 
-#define OPERATEVIEWDATALOG    19 //²é¿´ÀúÊ·Êı¾İ
+#define OPERATEVIEWDATALOG    19 //æŸ¥çœ‹å†å²æ•°æ®
 
-#define OPERATMATRIXVIEW      20 //¾ØÕóµã²¥
-#define OPERATMATRIXAUTO      21 //¾ØÕó×Ô¶¯²¥·Å
+#define OPERATMATRIXVIEW      20 //çŸ©é˜µç‚¹æ’­
+#define OPERATMATRIXAUTO      21 //çŸ©é˜µè‡ªåŠ¨æ’­æ”¾
 
-#define OPERATMATRIXARRAY     22 //¾ØÕó²¼¾Ö
+#define OPERATMATRIXARRAY     22 //çŸ©é˜µå¸ƒå±€
 
-#define OPERATMANAGE          23 //ÏµÍ³¹ÜÀí
+#define OPERATMANAGE          23 //ç³»ç»Ÿç®¡ç†
 
-//²Ù×÷
-#define OPERATEERROR         -1 //Òì³£
-#define OPERATEOPEN        0 //´ò¿ª
-#define OPERATEOFF         1 //¹Ø±Õ
-#define OPERATEPLAN        2 //¼Æ»®
+//æ“ä½œ
+#define OPERATEERROR         -1 //å¼‚å¸¸
+#define OPERATEOPEN        0 //æ‰“å¼€
+#define OPERATEOFF         1 //å…³é—­
+#define OPERATEPLAN        2 //è®¡åˆ’
 
 
-//Í¨µÀÀàĞÍ¶¨Òå
-#define TYPEOFALL          -1 //Î´Ö¸¶¨
+//é€šé“ç±»å‹å®šä¹‰
+#define TYPEOFALL          -1 //æœªæŒ‡å®š
 #define TYPEOFVIDEOCHAN     0
 #define TYPEOFALARMCHAN     1
 #define TYPEOFALARMOUT      2
 #define TYPEOFSENSORCHAN    3
 #define TYPEOFDOORCHAN      4
 
-//Éè±¸ÀàĞÍ
+//è®¾å¤‡ç±»å‹
 
 #define TYPEOFCAMERA     0
 #define TYPEOFDVR        1
@@ -221,7 +221,7 @@ typedef enum _OPERATION_TYPE_
 
 #define USEUPDATEFORCVR 1
 ///////////////////////////
-//ÇøÓò¡¢ÓÃ»§ÓëÈ¨ÏŞ¹ÜÀí
+//åŒºåŸŸã€ç”¨æˆ·ä¸æƒé™ç®¡ç†
 ///////////////////////////
 
 typedef struct _msg_region_base
@@ -229,7 +229,7 @@ typedef struct _msg_region_base
 	int nID;
 	char szName[50];
 	int nParentID;
-	char szDescription[100]; //ÃèÊö
+	char szDescription[100]; //æè¿°
 	bool bCenter;
 	char szIP[16];
 	int  nPort ;
@@ -250,48 +250,49 @@ typedef struct _msg_tree_region_base
 	int  nID;
 	char szName[50];
 	int  nParentID;
-	char szDescription[100]; //ÃèÊö
+	char szDescription[100]; //æè¿°
 	unsigned int unIndex ;
-	bool bEnable ;//ÓĞÈ¨ÏŞÊ¹ÓÃµÄÇøÓò
-	bool bDisable ;//½ûÓÃµÄ·¶Î§£¬Ö»Îª»ñµÃÂ·¾¶
+	unsigned int unRight ;//åŒºåŸŸæƒé™
+	bool bDisable ;//ç¦ç”¨çš„èŒƒå›´ï¼Œåªä¸ºè·å¾—è·¯å¾„
 }MSG_TREE_REGION_BASE, * LPMSG_TREE_REGION_BASE;
 
-//·Ö×é
+//åˆ†ç»„
 typedef struct _msg_tree_group_base
 {
 	int  nID  ;
 	char szName[50] ;
-	int  nType ;  //×éÀàĞÍ
+	int  nType ;  //ç»„ç±»å‹
 	int  nParentID ;
-	int  nRegionID ; //ÇøÓòid
+	int  nRegionID ; //åŒºåŸŸid
 	unsigned int unIndex ;
-	bool bEnable ;//ÓĞÈ¨ÏŞÊ¹ÓÃµÄÇøÓò
+	unsigned int unRight ;//åŒºåŸŸæƒé™
+	bool bEnable ;//æœ‰æƒé™ä½¿ç”¨çš„åŒºåŸŸ
 }MSG_TREE_GROUP_BASE, * LPMSG_TREE_GROUP_BASE;
 
 
-//·Ö×é
+//åˆ†ç»„
 typedef struct _msg_devgroup_base
 {
 	int  nID  ;
 	char szName[50] ;
-	int  nType ;  //×éÀàĞÍ
+	int  nType ;  //ç»„ç±»å‹
 	int  nParentID ;
-	int  nRegionID ; //ÇøÓòid
+	int  nRegionID ; //åŒºåŸŸid
 	unsigned int unIndex ;
 }MSG_DEVGROUP_BASE, * LPMSG_DEVGROUP_BASE;
-//Í¨µÀ·Ö×é
+//é€šé“åˆ†ç»„
 typedef struct _msg_changroup_base
 {
 	int  nID  ;
-	int   nDevID ; //Éè±¸ID
+	int   nDevID ; //è®¾å¤‡ID
 	int  nChan  ;
 	int  nDevType ;
 	int  nChanType ;
-	int   nGroupID ; //×éID
+	int   nGroupID ; //ç»„ID
 	unsigned int unIndex ;
 }MSG_CHANGROUP_BASE, * LPMSG_CHANGROUP_BASE;
 
-typedef struct _msg_user_info  //µÇÂ¼ĞÅÏ¢
+typedef struct _msg_user_info  //ç™»å½•ä¿¡æ¯
 {
 	char szUser[100] ;	
 	char szPass[100] ;	
@@ -299,13 +300,13 @@ typedef struct _msg_user_info  //µÇÂ¼ĞÅÏ¢
 }MSG_USER_INFO, * LPMSG_USER_INFO;
 
 
-typedef struct _msg_user_login_info  //µÇÂ¼ĞÅÏ¢
+typedef struct _msg_user_login_info  //ç™»å½•ä¿¡æ¯
 {
 	char szUser[100] ;	
 	int  nUserID ;
 	int  nUserGroupID ;
-	int  nRight ;       //È¨ÏŞ
-	int  nPrority ;     //Ö°ÄÜ¼¶±ğ
+	int  nRight ;       //æƒé™
+	int  nPrority ;     //èŒèƒ½çº§åˆ«
 	int  nAlarmRight ;
 	int  nRegionID ;
 	bool bUseDetailRight ;
@@ -313,11 +314,11 @@ typedef struct _msg_user_login_info  //µÇÂ¼ĞÅÏ¢
 
 typedef struct _msg_usergroup_base
 {
-	int  nID;				//ÓÃ»§ID
-	char szName[16];		//×éÃû
-	int  nRegionID;			//ÇøÓòÄÚ²¿±àºÅ
-	int  nPriority;			//¼¶±ğ	
-	int  nOperateRight;		//²Ù×÷È¨ÏŞ
+	int  nID;				//ç”¨æˆ·ID
+	char szName[16];		//ç»„å
+	int  nRegionID;			//åŒºåŸŸå†…éƒ¨ç¼–å·
+	int  nPriority;			//çº§åˆ«	
+	int  nOperateRight;		//æ“ä½œæƒé™
 	bool bUseDetailRight;
     
 }MSG_USERGROUP_BASE, * LPMSG_USERGROUP_BASE;
@@ -325,17 +326,17 @@ typedef struct _msg_usergroup_base
 typedef struct _msg_usergroupright_base
 {
 	int  nID;				//ID
-	int  nUserGroupid;		//ÓÃ»§×é±àºÅ
-	int  nAreaid;			//½ÇÉ«¹ÜÀíµÄ·¶Î§
-	int  nType;             //ÇøÓòÀàĞÍ
+	int  nUserGroupid;		//ç”¨æˆ·ç»„ç¼–å·
+	int  nAreaid;			//è§’è‰²ç®¡ç†çš„èŒƒå›´
+	int  nType;             //åŒºåŸŸç±»å‹
 }MSG_USERGROUPRIGHT_BASE, * LPMSG_USERGROUPRIGHT_BASE;
 
 typedef struct _msg_userinfo_base
 {
-	int  nID;				//ÓÃ»§ID
-	char szUser[16];		//ÓÃ»§Ãû
-	char szPass[16];		//ÓÃ»§ÃÜÂë
-	int  nUserGroupID ;		//ËùÊôÓÃ»§×éID
+	int  nID;				//ç”¨æˆ·ID
+	char szUser[16];		//ç”¨æˆ·å
+	char szPass[16];		//ç”¨æˆ·å¯†ç 
+	int  nUserGroupID ;		//æ‰€å±ç”¨æˆ·ç»„ID
 	int  nAlarmRight ;
 	char szRealName[20];
 	char szCellphone[12];
@@ -347,14 +348,14 @@ typedef struct _msg_userinfo_base
 
 typedef struct _msg_user_base
 {
-	int  nID;				//ÓÃ»§ID
-	char szUser[16];		//ÓÃ»§Ãû
-	char szPass[16];		//ÓÃ»§ÃÜÂë
-	int  nRegionID;			//ÇøÓòÄÚ²¿±àºÅ
-	BYTE  nPriority;		//¼¶±ğ	
-	int   nOperateRight;	//²Ù×÷È¨ÏŞ
-	int   nAlarmRight;		//½Ó¾¯È¨ÏŞ
-	unsigned int nLoginTime;      //¼ÇÂ¼µÇÂ½Ê±¼ä£¬ÓÃÓÚ²éÑ¯
+	int  nID;				//ç”¨æˆ·ID
+	char szUser[16];		//ç”¨æˆ·å
+	char szPass[16];		//ç”¨æˆ·å¯†ç 
+	int  nRegionID;			//åŒºåŸŸå†…éƒ¨ç¼–å·
+	BYTE  nPriority;		//çº§åˆ«	
+	int   nOperateRight;	//æ“ä½œæƒé™
+	int   nAlarmRight;		//æ¥è­¦æƒé™
+	unsigned int nLoginTime;      //è®°å½•ç™»é™†æ—¶é—´ï¼Œç”¨äºæŸ¥è¯¢
 	bool bUseDetailRight;
 	int  nUserGroupID ;
 	int  nLoginFrom ;
@@ -373,57 +374,58 @@ typedef struct _msg_userright_base
 }MSG_USERRIGHT_BASE, * LPMSG_USERRIGHT_BASE;
 
 ///////////////////////////////////
-//ÊÓÆµÉè±¸
+//è§†é¢‘è®¾å¤‡
 ///////////////////////////////////
-//ÊÓÆµÉè±¸(Â¼Ïñ»ú¡¢Ïà»ú)
+//è§†é¢‘è®¾å¤‡(å½•åƒæœºã€ç›¸æœº)
 
 
-//ÊÓÆµÉè±¸ĞÅÏ¢
+//è§†é¢‘è®¾å¤‡ä¿¡æ¯
 typedef struct _msg_recorddevice_base
 {
-	DWORD  nID;			    //ÄÚ²¿±àºÅ
-	char szName[50];        //·şÎñÆ÷Ãû³Æ
-	char szSerial[40];      //ĞòÁĞºÅ
-	char   nHardType;			//Ó²¼şÀàĞÍ£¬0£¬IPC£¬1£¬DVS£¬2£¬²É¼¯·şÎñÆ÷£¬3£¬±¨¾¯Éè±¸
-	char  nLinkType ;        //ÁªÍø·½Ê½
-	char  nServerType;		//·şÎñÆ÷ÀàĞÍ0:º£¿µ 1£º´ó»ª
-	char szIP[50];	        //·şÎñÆ÷µØÖ·/ÓòÃû
-	int  nPort;		        //·şÎñÆ÷¶Ë¿Ú
-	char szUser[20];		//ÓÃ»§Ãû
-	char szPass[20];		//ÓÃ»§ÃÜÂë
+	DWORD  nID;			    //å†…éƒ¨ç¼–å·
+	char szName[50];        //æœåŠ¡å™¨åç§°
+	char szSerial[40];      //åºåˆ—å·
+	char   nHardType;			//ç¡¬ä»¶ç±»å‹ï¼Œ0ï¼ŒIPCï¼Œ1ï¼ŒDVSï¼Œ2ï¼Œé‡‡é›†æœåŠ¡å™¨ï¼Œ3ï¼ŒæŠ¥è­¦è®¾å¤‡
+	char  nLinkType ;        //è”ç½‘æ–¹å¼
+	char  nServerType;		//æœåŠ¡å™¨ç±»å‹0:æµ·åº· 1ï¼šå¤§å
+	char szIP[50];	        //æœåŠ¡å™¨åœ°å€/åŸŸå
+	int  nPort;		        //æœåŠ¡å™¨ç«¯å£
+	char szUser[20];		//ç”¨æˆ·å
+	char szPass[20];		//ç”¨æˆ·å¯†ç 
 
 #if USEUPDATE
-	char szRemark[100];		//±¸×¢
+	char szRemark[100];		//å¤‡æ³¨
 #else
-	char szRemark[200];		//±¸×¢
+	char szRemark[200];		//å¤‡æ³¨
 #endif
-	int    nRegionID;			//ÇøÓòÄÚ²¿±àºÅ
+	int    nRegionID;			//åŒºåŸŸå†…éƒ¨ç¼–å·
 	
 	SHORT  nStorePos ;
 	SHORT  nMatixPos ;
 	char   nSetAlarm ;
 
 	unsigned int unIndex ;
+	unsigned int unRight ;//æƒé™
 #if USEUPDATE
-	unsigned int unUpdateTime; //¸üĞÂÊ±¼ä   -- updatetime
+	unsigned int unUpdateTime; //æ›´æ–°æ—¶é—´   -- updatetime
 #endif
 	unsigned int nStatus ;
 	
 }MSG_RECORDDEVICE_BASE, * LPMSG_RECORDDEVICE_BASE;
 
 
-//ÊÓÆµÍ¨µÀ½Úµã
+//è§†é¢‘é€šé“èŠ‚ç‚¹
 typedef struct _msg_video_record_base
 {
 	DWORD  nID ;
-	int   nChan;		    //Í¨µÀºÅ
-	char  szName[40];	    //½ÚµãÎÄ±¾
-	int   nStorePos;		//´æ´¢ÖĞµÄÍ¨µÀË÷Òı
-	int   nDeviceID ;	    //¸¸½ÚµãID
-	int   nMatrixPos;		//¾ØÕóË÷ÒıºÅ
+	int   nChan;		    //é€šé“å·
+	char  szName[40];	    //èŠ‚ç‚¹æ–‡æœ¬
+	int   nStorePos;		//å­˜å‚¨ä¸­çš„é€šé“ç´¢å¼•
+	int   nDeviceID ;	    //çˆ¶èŠ‚ç‚¹ID
+	int   nMatrixPos;		//çŸ©é˜µç´¢å¼•å·
 	char  nSetAlarm ;
-	char  nLevel;		//±¨¾¯¼¶±ğ
-	int   nType;        //Í¨µÀÀàĞÍ
+	char  nLevel;		//æŠ¥è­¦çº§åˆ«
+	int   nType;        //é€šé“ç±»å‹
 	char  szPass[20];
 	bool  bDuplex ;
 	int nParam1;
@@ -431,8 +433,8 @@ typedef struct _msg_video_record_base
     int nParam3;
     int nParam4;
 #if USEUPDATE
-	char szRemark[100];		//±¸×¢
-	unsigned int unUpdateTime; //¸üĞÂÊ±¼ä   -- updatetime
+	char szRemark[100];		//å¤‡æ³¨
+	unsigned int unUpdateTime; //æ›´æ–°æ—¶é—´   -- updatetime
 #endif
 
 #if USEUPDATEFORCVR
@@ -442,9 +444,10 @@ typedef struct _msg_video_record_base
 #if USEUPDATE
 	char szIP[20];
 	char szUser[20];
-	int  nPort ;//ÊÓÆµÍ¨µÀµÄÇé¿öÏÂnParam1±íÊ¾Éè±¸ÀàĞÍ£¬nParam2±íÊ¾ÊÇ·ñ±¨¾¯
+	int  nPort ;//è§†é¢‘é€šé“çš„æƒ…å†µä¸‹nParam1è¡¨ç¤ºè®¾å¤‡ç±»å‹ï¼ŒnParam2è¡¨ç¤ºæ˜¯å¦æŠ¥è­¦
 #endif
 	unsigned int unIndex ;
+	unsigned int unRight ;//æƒé™
 	unsigned int  nStatus ;
 }MSG_VIDEO_RECORD_BASE, * LPMSG_VIDEO_RECORD_BASE; 
 
@@ -452,9 +455,9 @@ typedef struct _msg_video_record_base
 
 
 //////////////////////////////////
-//¾ØÕóÉè±¸
+//çŸ©é˜µè®¾å¤‡
 /////////////////////////////////
-//Êı×Ö¾ØÕóĞÅÏ¢
+//æ•°å­—çŸ©é˜µä¿¡æ¯
 typedef struct _msg_matrixsvr_base
 {
 	int   nID ;
@@ -469,11 +472,11 @@ typedef struct _msg_matrixsvr_base
 
 typedef struct _msg_screen_matrixsvr_base
 {	
-	int   nID ; //IDºÅ
+	int   nID ; //IDå·
 	char  szName[50];
-	char   nScreenNum ;//¼àÊÓÆ÷ºÅ
-	char   nSubScreenNum ;//×Ó´°¿Ú¸öÊıÁ¿,20150812Êµ¼ÊÏÖÔÚÊÇÊı¾İ¿â´æ·ÅµÄË÷ÒıºÅ=ÏµÍ³±àºÅ
-	int   nMatrixID ;	//¾ØÕóÖ÷»ú
+	char   nScreenNum ;//ç›‘è§†å™¨å·
+	char   nSubScreenNum ;//å­çª—å£ä¸ªæ•°é‡,20150812å®é™…ç°åœ¨æ˜¯æ•°æ®åº“å­˜æ”¾çš„ç´¢å¼•å·=ç³»ç»Ÿç¼–å·
+	int   nMatrixID ;	//çŸ©é˜µä¸»æœº
 	unsigned short   nX ;
 	unsigned short   nY ;
 	unsigned short   nW ;
@@ -481,31 +484,31 @@ typedef struct _msg_screen_matrixsvr_base
 }MSG_SCREEN_MATRIXSVR_BASE, * LPMSG_SCREEN_MATRIXSVR_BASE;
 
 //////////////////////////
-//µØÍ¼
+//åœ°å›¾
 //////////////////////////
-//µØÍ¼ĞÅÏ¢
+//åœ°å›¾ä¿¡æ¯
 typedef struct _msg_map_base
 {
-	int  nID;			//µØÍ¼±àºÅ
-	char szName[50];	//µØÍ¼Ãû³Æ
+	int  nID;			//åœ°å›¾ç¼–å·
+	char szName[50];	//åœ°å›¾åç§°
 	char  nMapType;
-	int  nParentID;		//¸¸ÇøÓòÄÚ²¿±àºÅ
-	int  nRegionID;		//¸¸ÇøÓòÄÚ²¿±àºÅ
+	int  nParentID;		//çˆ¶åŒºåŸŸå†…éƒ¨ç¼–å·
+	int  nRegionID;		//çˆ¶åŒºåŸŸå†…éƒ¨ç¼–å·
 	int  nImageType;
-	int  nImageSize ;   //µØÍ¼Êı¾İ´óĞ¡
+	int  nImageSize ;   //åœ°å›¾æ•°æ®å¤§å°
 }MSG_MAP_BASE, * LPMSG_MAP_BASE;
 
 typedef struct _msg_node_map_base
 {
-	int  nID;			//½ÚµãÄÚ²¿±àºÅ
-	char  nType;			//ÀàĞÍ0:µØÍ¼ 2£ºÍ¨µÀ
-	char szName[50];	//ÇøÓòÃû³Æ
-	int  nDeviceID;     //ÀàĞÍÎª2Ê±£¬´ú±íÉè±¸ID,ÀàĞÍÎª0Ê±£¬´ú±íµØÍ¼µÄID
-	char  nDeviceType;	//Éè±¸ÀàĞÍ
-	int   nChan ;        //Í¨µÀºÅ
-	char  nChanType;		//Í¨µÀÀàĞÍ, 0ÎªÊÓÆµÍ¨µÀ£¬1ÎªÊäÈëÍ¨µÀ
-	char  nNodeType ;    //Í¼±êÀàĞÍ,¿ÉÊ¹ÓÃ²»Í¬µÄÍ¼±ê±êÊ¶µØÍ¼
-	int  nMapID;		//¸¸ÇøÓòÄÚ²¿±àºÅ
+	int  nID;			//èŠ‚ç‚¹å†…éƒ¨ç¼–å·
+	char  nType;			//ç±»å‹0:åœ°å›¾ 2ï¼šé€šé“
+	char szName[50];	//åŒºåŸŸåç§°
+	int  nDeviceID;     //ç±»å‹ä¸º2æ—¶ï¼Œä»£è¡¨è®¾å¤‡ID,ç±»å‹ä¸º0æ—¶ï¼Œä»£è¡¨åœ°å›¾çš„ID
+	char  nDeviceType;	//è®¾å¤‡ç±»å‹
+	int   nChan ;        //é€šé“å·
+	char  nChanType;		//é€šé“ç±»å‹, 0ä¸ºè§†é¢‘é€šé“ï¼Œ1ä¸ºè¾“å…¥é€šé“
+	char  nNodeType ;    //å›¾æ ‡ç±»å‹,å¯ä½¿ç”¨ä¸åŒçš„å›¾æ ‡æ ‡è¯†åœ°å›¾
+	int  nMapID;		//çˆ¶åŒºåŸŸå†…éƒ¨ç¼–å·
 	int  nX;
 	int  nY;
 	int  nNextX;
@@ -513,7 +516,7 @@ typedef struct _msg_node_map_base
 }MSG_NODE_MAP_BASE, * LPMSG_NODE_MAP_BASE;
 
 //////////////////////////////
-//´æ´¢
+//å­˜å‚¨
 //////////////////////////////
 typedef struct _msg_recordsvr_base
 {
@@ -528,7 +531,7 @@ typedef struct _msg_recordsvr_base
 
 
 //////////////////////////////////
-//Á÷Ã½Ìå
+//æµåª’ä½“
 /////////////////////////////////
 typedef struct _msg_mediasrv_base
 {
@@ -542,16 +545,16 @@ typedef struct _msg_mediasrv_base
 
 }MSG_MEDIASRV_BASE, * LPMSG_MEDIASRV_BASE;
 
-//Í¨Ñ¶Êı¾İÍ·£¬ÓÃÓÚ·şÎñÆ÷¼äµÄÊı¾İÍ¨Ñ¶,ËùÓĞÏò¹ØÉè±¸£¬¾ùÊ¹ÓÃ´ËÍ·½øĞĞÍ¨Ñ¶
+//é€šè®¯æ•°æ®å¤´ï¼Œç”¨äºæœåŠ¡å™¨é—´çš„æ•°æ®é€šè®¯,æ‰€æœ‰å‘å…³è®¾å¤‡ï¼Œå‡ä½¿ç”¨æ­¤å¤´è¿›è¡Œé€šè®¯
 typedef struct _msg_head_info
 {
-	BYTE   nType ;          //ĞÅÏ¢ÀàĞÍ:=0»òÂÔ£¬1±¨¾¯£¬2£¬×´Ì¬£¬3£¬Éè±¸ÊÂ¼ş,4,µÇÂ¼
-	                       //5£¬×ÊÔ´ÇëÇó£¬6,ÏµÍ³Í¨Öª£¬7£¬ÍÆËÍĞÅÏ¢£¬8£¬ÍÆËÍ´¦Àí£¬9£¬ÍÆËÍÎÄ¼ş£¬10,Ğ´ÈÕÖ¾
-	                       //10,ÍÆËÍÁ÷Ê½Êı¾İ£¬11£¬ÏìÓ¦
-	BYTE   nFrom ;          //ÀàĞÍÀ´Ô´:=0»òÂÔ£¬1£¬¿Í»§¶Ë£¬2ÖĞĞÄ·şÎñÆ÷£¬3£¬Á÷Ã½Ìå·şÎñÆ÷£¬4£¬´æ´¢·şÎñÆ÷£¬5£¬±¨¾¯·şÎñÆ÷£¬6£¬½âÂë·şÎñÆ÷£¬7£¬Õï¶Ï£¬8£¬ÖÇÄÜ·ÖÎö,9£¬·şÎñÆ÷µÄÑÓÉì
-    BYTE   nTo ;            //ËÍÍùÓÃ»§µÄÀàĞÍ
-	int   nFromClientID ;  //·¢ËÍĞÅÏ¢µÄÓÃ»§£¬IDÎªÓÃ»§ÏµÍ³ÖĞ±àºÅ£¬ÓÃÓÚ¿Í»§¶ËµÄÍ¨Ñ¶
-	int   nToClientID ;    //½ÓÊÜĞÅÏ¢µÄÓÃ»§£¬IDÎªÓÃ»§ÏµÍ³ÖĞ±àºÅ£¬ÓÃÓÚ¿Í»§¶ËµÄÍ¨Ñ¶
+	BYTE   nType ;          //ä¿¡æ¯ç±»å‹:=0æˆ–ç•¥ï¼Œ1æŠ¥è­¦ï¼Œ2ï¼ŒçŠ¶æ€ï¼Œ3ï¼Œè®¾å¤‡äº‹ä»¶,4,ç™»å½•
+	                       //5ï¼Œèµ„æºè¯·æ±‚ï¼Œ6,ç³»ç»Ÿé€šçŸ¥ï¼Œ7ï¼Œæ¨é€ä¿¡æ¯ï¼Œ8ï¼Œæ¨é€å¤„ç†ï¼Œ9ï¼Œæ¨é€æ–‡ä»¶ï¼Œ10,å†™æ—¥å¿—
+	                       //10,æ¨é€æµå¼æ•°æ®ï¼Œ11ï¼Œå“åº”
+	BYTE   nFrom ;          //ç±»å‹æ¥æº:=0æˆ–ç•¥ï¼Œ1ï¼Œå®¢æˆ·ç«¯ï¼Œ2ä¸­å¿ƒæœåŠ¡å™¨ï¼Œ3ï¼Œæµåª’ä½“æœåŠ¡å™¨ï¼Œ4ï¼Œå­˜å‚¨æœåŠ¡å™¨ï¼Œ5ï¼ŒæŠ¥è­¦æœåŠ¡å™¨ï¼Œ6ï¼Œè§£ç æœåŠ¡å™¨ï¼Œ7ï¼Œè¯Šæ–­ï¼Œ8ï¼Œæ™ºèƒ½åˆ†æ,9ï¼ŒæœåŠ¡å™¨çš„å»¶ä¼¸
+    BYTE   nTo ;            //é€å¾€ç”¨æˆ·çš„ç±»å‹
+	int   nFromClientID ;  //å‘é€ä¿¡æ¯çš„ç”¨æˆ·ï¼ŒIDä¸ºç”¨æˆ·ç³»ç»Ÿä¸­ç¼–å·ï¼Œç”¨äºå®¢æˆ·ç«¯çš„é€šè®¯
+	int   nToClientID ;    //æ¥å—ä¿¡æ¯çš„ç”¨æˆ·ï¼ŒIDä¸ºç”¨æˆ·ç³»ç»Ÿä¸­ç¼–å·ï¼Œç”¨äºå®¢æˆ·ç«¯çš„é€šè®¯
 }MSG_HEAD_INFO, * LPMSG_HEAD_INFO;
 
 typedef struct _msg_vca_rect{
@@ -561,19 +564,19 @@ typedef struct _msg_vca_rect{
 	USHORT		h;
 }MSG_VCA_RECT,*LPMSG_VCA_RECT;	
 
-//Ô¤ÖÃÎ»ĞÅÏ¢
+//é¢„ç½®ä½ä¿¡æ¯
 typedef struct _msg_preset_base
 {
-	int    nID ;   //Ô¤ÖÃÎ»×ÔÉíIP
-	char    nDeviceID ;//ºÍÍ¨µÀID¶şÑ¡Ò»
-	int    nChan     ;//ºÍÍ¨µÀID¶şÑ¡Ò»
-	char   szName[100];	//Ãû³Æ
-	char    nIndex;		//Ô¤ÖÃµã±àºÅ
-	unsigned int nStayTime;		//Í£ÁôÊ±¼ä
+	int    nID ;   //é¢„ç½®ä½è‡ªèº«IP
+	char    nDeviceID ;//å’Œé€šé“IDäºŒé€‰ä¸€
+	int    nChan     ;//å’Œé€šé“IDäºŒé€‰ä¸€
+	char   szName[100];	//åç§°
+	char    nIndex;		//é¢„ç½®ç‚¹ç¼–å·
+	unsigned int nStayTime;		//åœç•™æ—¶é—´
 }MSG_PRESET_BASE, * LPMSG_PRESET_BASE; 
 
 
-//ÖÇÄÜ·ÖÎö·şÎñÆ÷
+//æ™ºèƒ½åˆ†ææœåŠ¡å™¨
 typedef struct _msg_intvsrv_base
 {
 	int  nID;
@@ -598,7 +601,7 @@ typedef struct _msg_intvchan_base
 
 
 
-//¶ÌÁ¬½ÓµÄÃüÁîÊı¾İ
+//çŸ­è¿æ¥çš„å‘½ä»¤æ•°æ®
 
 typedef struct _msg_time_base
 {
@@ -612,12 +615,12 @@ typedef struct _msg_time_base
 //20150701
 typedef struct _msg_dev_query
 {
-	int  nType ;        //ÀàĞÍ£º0£¬È«²¿£¬1£¬¸ù¾İÇøÓò²éÕÒ£¬2£¬¸ù¾İÉè±¸²éÕÒ£¬3¸ù¾İÍ¨µÀ²éÕÒ
-	int  nRegionID ;    //ÇøÓòID
-	int  nDeviceID;	    //Éè±¸ID
-	char  nDeviceType ;  //Éè±¸ÀàĞÍ
-	int   nChanNo;		//Í¨µÀºÅ
-	char  nChanType;     //Í¨µÀÀàĞÍ
+	int  nType ;        //ç±»å‹ï¼š0ï¼Œå…¨éƒ¨ï¼Œ1ï¼Œæ ¹æ®åŒºåŸŸæŸ¥æ‰¾ï¼Œ2ï¼Œæ ¹æ®è®¾å¤‡æŸ¥æ‰¾ï¼Œ3æ ¹æ®é€šé“æŸ¥æ‰¾
+	int  nRegionID ;    //åŒºåŸŸID
+	int  nDeviceID;	    //è®¾å¤‡ID
+	char  nDeviceType ;  //è®¾å¤‡ç±»å‹
+	int   nChanNo;		//é€šé“å·
+	char  nChanType;     //é€šé“ç±»å‹
 }MSG_DEV_QUERY, * LPMSG_DEV_QUERY;
 
 typedef struct _msg_time_query
@@ -627,29 +630,29 @@ typedef struct _msg_time_query
 	bool bUser ;
 }MSG_TIME_QUERY,*LPMSG_TIME_QUERY;
 
-typedef struct _msg_dboperate_info  //Ö´ĞĞSQLÓï¾ä
+typedef struct _msg_dboperate_info  //æ‰§è¡ŒSQLè¯­å¥
 {
-	int nType ;	   //1Ôö¼Ó£¬2ĞŞ¸Ä£¬3É¾³ı,4²éÑ¯
-	SHORT nTable ;   //±íµÄÀàĞÍ
-	char nNodeType ;//½ÚµãÀàĞÍ,0£¬±¾¼¶½Úµã£¬1£¬¸¸½Úµã£¬2£¬µ±Ç°½ÚµãÒÔÏÂ½Úµã
-	int nNodeID ;  //½ÚµãID
+	int nType ;	   //1å¢åŠ ï¼Œ2ä¿®æ”¹ï¼Œ3åˆ é™¤,4æŸ¥è¯¢
+	SHORT nTable ;   //è¡¨çš„ç±»å‹
+	char nNodeType ;//èŠ‚ç‚¹ç±»å‹,0ï¼Œæœ¬çº§èŠ‚ç‚¹ï¼Œ1ï¼Œçˆ¶èŠ‚ç‚¹ï¼Œ2ï¼Œå½“å‰èŠ‚ç‚¹ä»¥ä¸‹èŠ‚ç‚¹
+	int nNodeID ;  //èŠ‚ç‚¹ID
 }MSG_DBOPERATE_INFO, * LPMSG_DBOPERATE_INFO;
 
-typedef struct _msg_sql_info  //Ö´ĞĞSQLÓï¾ä
+typedef struct _msg_sql_info  //æ‰§è¡ŒSQLè¯­å¥
 {
-	int nType ;	   //1Ôö¼Ó£¬2ĞŞ¸Ä£¬3É¾³ı,4²éÑ¯
-	SHORT nTable ;   //±íµÄÀàĞÍ
-	char szSQL[1024] ;//Ö±½ÓÖ´ĞĞSQLÓï¾ä
+	int nType ;	   //1å¢åŠ ï¼Œ2ä¿®æ”¹ï¼Œ3åˆ é™¤,4æŸ¥è¯¢
+	SHORT nTable ;   //è¡¨çš„ç±»å‹
+	char szSQL[1024] ;//ç›´æ¥æ‰§è¡ŒSQLè¯­å¥
 }MSG_SQL_INFO, * LPMSG_SQL_INFO;
 
 
-/*¶ÌÁ¬½ÓÊı¾İ½»»¥*/
+/*çŸ­è¿æ¥æ•°æ®äº¤äº’*/
 
-//20150720 ½Ó±¨¾¯Áª¶¯¼Æ»® 
+//20150720 æ¥æŠ¥è­¦è”åŠ¨è®¡åˆ’ 
 
-typedef struct _msg_plan_info  //20150629¼Æ»®
+typedef struct _msg_plan_info  //20150629è®¡åˆ’
 {
-	BYTE bPlans[7][48];        //¼Æ»®
+	BYTE bPlans[7][48];        //è®¡åˆ’
 }MSG_PLAN_INFO, * LPMSG_PLAN_INFO;
 
 typedef struct _msg_union_plan  
@@ -663,89 +666,89 @@ typedef struct _msg_union_plan
 typedef struct _msg_union_plan_new  
 {
 	int   nID ;
-	int   nDevID;		//Éè±¸ID
-	int   nChan ;  //Í¨µÀºÅ
-	char  nDevType ;     //Éè±¸ÀàĞÍ0:dvr 1:ÍâÎ§Éè±¸
+	int   nDevID;		//è®¾å¤‡ID
+	int   nChan ;  //é€šé“å·
+	char  nDevType ;     //è®¾å¤‡ç±»å‹0:dvr 1:å¤–å›´è®¾å¤‡
 	char  nChanType ;    //
 	int   nAlarmType ;
 
 	MSG_PLAN_INFO plan ;
 }MSG_UNION_PLAN_NEW, * LPMSG_UNION_PLAN_NEW;
 
-typedef struct _msg_union_source  //20150629Í¨µÀ¹ØÁªĞÅÏ¢
+typedef struct _msg_union_source  //20150629é€šé“å…³è”ä¿¡æ¯
 {
 	int    nID ;
-	int    nDeviceID;		//Éè±¸ID
-	int    nChan ;  //Í¨µÀºÅ
-	char   nDeviceType ;     //Éè±¸ÀàĞÍ0:dvr 1:ÍâÎ§Éè±¸
-	char   nChanType ;    //Í¨µÀÀàĞÍ 0£ºÊÓÆµÍ¨µÀ £¬1£º¿ª¹ØÁ¿ÊäÈëÍ¨µÀ£¬2£º¿ª¹ØÁ¿Êä³öÍ¨µÀ£¬3£ºÄ£ÄâÁ¿Í¨µÀ
+	int    nDeviceID;		//è®¾å¤‡ID
+	int    nChan ;  //é€šé“å·
+	char   nDeviceType ;     //è®¾å¤‡ç±»å‹0:dvr 1:å¤–å›´è®¾å¤‡
+	char   nChanType ;    //é€šé“ç±»å‹ 0ï¼šè§†é¢‘é€šé“ ï¼Œ1ï¼šå¼€å…³é‡è¾“å…¥é€šé“ï¼Œ2ï¼šå¼€å…³é‡è¾“å‡ºé€šé“ï¼Œ3ï¼šæ¨¡æ‹Ÿé‡é€šé“
 	int    nRegionID; 
-	int    nMatrixSvrID;  //Éè±¸ID
-	int    nMatrixScreenNum; //ÆÁID 
-	int    nMatrixSubScreeNum; //×ÓÆÁºÅ 
-	bool   bUnionMatrix; //¹ØÁª¾ØÕó
+	int    nMatrixSvrID;  //è®¾å¤‡ID
+	int    nMatrixScreenNum; //å±ID 
+	int    nMatrixSubScreeNum; //å­å±å· 
+	bool   bUnionMatrix; //å…³è”çŸ©é˜µ
 
 }MSG_UNION_SOURCE, * LPMSG_UNION_SOURCE;
 
 
 //20150629
-typedef struct _msg_union_chan  //20150629Í¨µÀ¹ØÁªĞÅÏ¢
+typedef struct _msg_union_chan  //20150629é€šé“å…³è”ä¿¡æ¯
 {
 	int   nID ;
 	int   nSourceID ;
-	int   nDeviceID;		//Éè±¸ID
-	int   nChan ;  //Í¨µÀºÅ
-	char  nDeviceType ;     //Éè±¸ÀàĞÍ0:dvr 1:ÍâÎ§Éè±¸
+	int   nDeviceID;		//è®¾å¤‡ID
+	int   nChan ;  //é€šé“å·
+	char  nDeviceType ;     //è®¾å¤‡ç±»å‹0:dvr 1:å¤–å›´è®¾å¤‡
 	char  nChanType ;    //
-	char  nActionType ;      //¶¯×÷ÀàĞÍ
-	int   nParam1 ;     //¶¯×÷²ÎÊı1
-	int   nParam2 ;     //¶¯×÷²ÎÊı2
-	int   nParam3 ;     //¶¯×÷²ÎÊı3
-	int   nParam4 ;     //¶¯×÷²ÎÊı3
+	char  nActionType ;      //åŠ¨ä½œç±»å‹
+	int   nParam1 ;     //åŠ¨ä½œå‚æ•°1
+	int   nParam2 ;     //åŠ¨ä½œå‚æ•°2
+	int   nParam3 ;     //åŠ¨ä½œå‚æ•°3
+	int   nParam4 ;     //åŠ¨ä½œå‚æ•°3
 }MSG_UNION_CHAN, * LPMSG_UNION_CHAN;
 
-typedef struct _msg_union_chan_new  //20150629Í¨µÀ¹ØÁªĞÅÏ¢
+typedef struct _msg_union_chan_new  //20150629é€šé“å…³è”ä¿¡æ¯
 {
 	int   nID ;
-	int   nDevID;		//Éè±¸ID
-	int   nChan ;  //Í¨µÀºÅ
-	char  nDevType ;     //Éè±¸ÀàĞÍ0:dvr 1:ÍâÎ§Éè±¸
+	int   nDevID;		//è®¾å¤‡ID
+	int   nChan ;  //é€šé“å·
+	char  nDevType ;     //è®¾å¤‡ç±»å‹0:dvr 1:å¤–å›´è®¾å¤‡
 	char  nChanType ;    //
 	int   nAlarmType ;
 
-	int   nUnionDevID;		//Éè±¸ID
-	int   nUnionChan ;  //Í¨µÀºÅ
-	char  nUnionDevType ;     //Éè±¸ÀàĞÍ0:dvr 1:ÍâÎ§Éè±¸
+	int   nUnionDevID;		//è®¾å¤‡ID
+	int   nUnionChan ;  //é€šé“å·
+	char  nUnionDevType ;     //è®¾å¤‡ç±»å‹0:dvr 1:å¤–å›´è®¾å¤‡
 	char  nUnionChanType ;    //
 
-	char  nActionType ;      //¶¯×÷ÀàĞÍ
-	int   nParam1 ;     //¶¯×÷²ÎÊı1
-	int   nParam2 ;     //¶¯×÷²ÎÊı2
-	int   nParam3 ;     //¶¯×÷²ÎÊı3
-	int   nParam4 ;     //¶¯×÷²ÎÊı3
+	char  nActionType ;      //åŠ¨ä½œç±»å‹
+	int   nParam1 ;     //åŠ¨ä½œå‚æ•°1
+	int   nParam2 ;     //åŠ¨ä½œå‚æ•°2
+	int   nParam3 ;     //åŠ¨ä½œå‚æ•°3
+	int   nParam4 ;     //åŠ¨ä½œå‚æ•°3
 }MSG_UNION_CHAN_NEW, * LPMSG_UNION_CHAN_NEW;
 
-typedef struct _msg_plan_templ  //20150629¼Æ»®
+typedef struct _msg_plan_templ  //20150629è®¡åˆ’
 {
-	MSG_PLAN_INFO plan;        //¼Æ»®
+	MSG_PLAN_INFO plan;        //è®¡åˆ’
 	int           nID ;
 	char          szName[100] ;
 }MSG_PLAN_TEMPL, * LPMSG_PLAN_TEMPL;
 
-typedef struct _msg_record_plan  //20150629Â¼Ïñ¼Æ»®
+typedef struct _msg_record_plan  //20150629å½•åƒè®¡åˆ’
 {
 	int   nID ;
-	int   nDeviceID;		//Éè±¸ID
-	int   nChan ;           //Í¨µÀºÅ
-	char   nRecordType ;     //Â¼Ïó·½Ê½
-	MSG_PLAN_INFO plan;        //¼Æ»®
+	int   nDeviceID;		//è®¾å¤‡ID
+	int   nChan ;           //é€šé“å·
+	char   nRecordType ;     //å½•è±¡æ–¹å¼
+	MSG_PLAN_INFO plan;        //è®¡åˆ’
 }MSG_RECORD_PLAN, * LPMSG_RECORD_PLAN;
 
 typedef struct _msg_user_videonode
 {
-	int   nDeviceID ;          //Éè±¸ID
+	int   nDeviceID ;          //è®¾å¤‡ID
 	char   nDeviceType ;
-	int   nChan;               //Í¨µÀºÅ
+	int   nChan;               //é€šé“å·
 	char   nChanType ;
 }MSG_USER_VIDEONODE, * LPMSG_USER_VIDEONODE;
 
@@ -756,21 +759,21 @@ typedef struct _msg_user_videogroup
 	int                nID ;
 	int                nUserID ;
 	char               szGroupName[100] ;
-	char                nType ;//0:ÔÚ¹ÜÀíÖĞ½øĞĞÉèÖÃ£¬1£ºÓÃ»§×Ô¼ºÔö¼ÓµÄË½ÈË×é£¬²»Í¬µÄ±í
+	char                nType ;//0:åœ¨ç®¡ç†ä¸­è¿›è¡Œè®¾ç½®ï¼Œ1ï¼šç”¨æˆ·è‡ªå·±å¢åŠ çš„ç§äººç»„ï¼Œä¸åŒçš„è¡¨
 }MSG_USER_VIDEOGROUP, * LPMSG_USER_VIDEOGROUP;
 
-//²éÑ¯·µ»ØµÄ½á¹û¼ÇÂ¼±í£¬20150720ĞÂ¼Ó
+//æŸ¥è¯¢è¿”å›çš„ç»“æœè®°å½•è¡¨ï¼Œ20150720æ–°åŠ 
 typedef struct _msg_response_head
 {
-	int   nRecordSize ;//Êı¾İ¸öÊı
-	BYTE  byTableType ;//±íÀàĞÍ
+	int   nRecordSize ;//æ•°æ®ä¸ªæ•°
+	BYTE  byTableType ;//è¡¨ç±»å‹
 }MSG_RESPONSE_HEAD, * LPMSG_RESPONSE_HEAD;
 
 
-//¸ø´æ´¢·şÎñÆ÷µÄÍ¨µÀ½á¹¹
+//ç»™å­˜å‚¨æœåŠ¡å™¨çš„é€šé“ç»“æ„
 typedef struct _msg_storechan_base
 {
-	SHORT  iPos ;	//ÅÌÕóÖĞ±£´æµÄĞòºÅ
+	SHORT  iPos ;	//ç›˜é˜µä¸­ä¿å­˜çš„åºå·
 	char szChanName[100];
 	int   iChan;
 	char  nStreamType ;
@@ -782,22 +785,22 @@ typedef struct _msg_storechan_base
 	DWORD dwID;
 }MSG_STORECHAN_BASE , *LPMSG_STORECHAN_BASE;
 
-//²Ù×÷ÈÕÖ¾¼ÇÂ¼
+//æ“ä½œæ—¥å¿—è®°å½•
 typedef struct _msg_operate_base
 {
-	int   nUserID;		//²Ù×÷ÈË
-	int   nAlarmID;      //Ôö¼Ó¶Ô±¨¾¯¼ÇÂ¼µÄ²Ù×÷
-	int   nDeviceID;	    //Éè±¸ID
-	char  nDeviceType;   //Éè±¸ÀàĞÍ
-	int   nChan ;        //Í¨µÀºÅ
-	char  nChanType;		//Í¨µÀÀàĞÍ
-//	char  szContent[100];//ÃèÊö
-	char  nOperateType ; //²Ù×÷ÀàĞÍ
-	char  nAction ;      //¶¯×÷
+	int   nUserID;		//æ“ä½œäºº
+	int   nAlarmID;      //å¢åŠ å¯¹æŠ¥è­¦è®°å½•çš„æ“ä½œ
+	int   nDeviceID;	    //è®¾å¤‡ID
+	char  nDeviceType;   //è®¾å¤‡ç±»å‹
+	int   nChan ;        //é€šé“å·
+	char  nChanType;		//é€šé“ç±»å‹
+//	char  szContent[100];//æè¿°
+	char  nOperateType ; //æ“ä½œç±»å‹
+	char  nAction ;      //åŠ¨ä½œ
 //	unsigned int unLogTime ;
 }MSG_OPERATE_BASE, * LPMSG_OPERATE_BASE;
 
-//ÏµÍ³·şÎñÆ÷
+//ç³»ç»ŸæœåŠ¡å™¨
 typedef struct _msg_systemsrv_base
 {
 	int  nID;
@@ -807,33 +810,33 @@ typedef struct _msg_systemsrv_base
 	int  nPort2;
 #endif
 	int  nServerType;
-	char szSerial[40];      //ĞòÁĞºÅ
+	char szSerial[40];      //åºåˆ—å·
 	char szUser[20];
 	char szPass[20];
 	int  nFactoryType ;
 	int  nRegionID;
-	int  nState ;//×´Ì¬
-	int  nEmergencyStatus ;//Ó¦¼±´æ´¢ÊÇ·ñÔÚÏß
+	int  nState ;//çŠ¶æ€
+	int  nEmergencyStatus ;//åº”æ€¥å­˜å‚¨æ˜¯å¦åœ¨çº¿
 #if USEUPDATE
 	char szDescription[100] ;
 	unsigned int unUpdateTime;
 #endif
 }MSG_SYSTEMSRV_BASE, * LPMSG_SYSTEMSRV_BASE;
 
-//·şÎñÆ÷ÏÂÃæµÄÍ¨µÀ
+//æœåŠ¡å™¨ä¸‹é¢çš„é€šé“
 typedef struct _msg_serverchan_base
 {
 	int  nID  ;
-	int   nDevID ; //Éè±¸ID
+	int   nDevID ; //è®¾å¤‡ID
 	int  nChan  ;
 	int  nDevType ;
 	int  nChanType ;
-	int   nParentID ; //·şÎñÆ÷ID
+	int   nParentID ; //æœåŠ¡å™¨ID
 	unsigned int unIndex ;
 }MSG_SERVERCHAN_BASE, * LPMSG_SERVERCHAN_BASE;
 
-//ÊÖ»ú×¨ÓÃ½á¹¹Ìå
-//ÇøÓò
+//æ‰‹æœºä¸“ç”¨ç»“æ„ä½“
+//åŒºåŸŸ
 typedef struct _msg_mobi_region_base
 {
 	int nID;
@@ -841,7 +844,7 @@ typedef struct _msg_mobi_region_base
 	int nParentID;
 }MSG_MOBI_REGION_BASE, * LPMSG_MOBI_REGION_BASE;
 
-//ÊÓÆµÍ¨µÀ
+//è§†é¢‘é€šé“
 typedef struct _msg_mobi_chan_base
 {
 	int  nID;
@@ -849,11 +852,11 @@ typedef struct _msg_mobi_chan_base
 	int  nDevID ;
 	int  nRegionID;
 	char szName[50];
-	char szMediaUrl[255] ;//Ã½Ìå·ÃÎÊ´®
-	char szRecordUrl[255] ;//Ã½Ìå»Ø·Å·ÃÎÊ´®£¬Èç¹ûÃ»ÓĞ´æ´¢·şÎñÆ÷Ôò²»ĞèÒª
+	char szMediaUrl[255] ;//åª’ä½“è®¿é—®ä¸²
+	char szRecordUrl[255] ;//åª’ä½“å›æ”¾è®¿é—®ä¸²ï¼Œå¦‚æœæ²¡æœ‰å­˜å‚¨æœåŠ¡å™¨åˆ™ä¸éœ€è¦
 }MSG_MOBI_CHAN_BASE, * LPMSG_MOBI_CHAN_BASE;
 
-//¸üĞÂÂ¼Ïñ»úµÄÇøÓò
+//æ›´æ–°å½•åƒæœºçš„åŒºåŸŸ
 typedef struct _msg_update_region
 {
 	int nDeviceID ;
@@ -861,22 +864,22 @@ typedef struct _msg_update_region
 	int nRegionID ;
 }MSG_UPDATE_REGION, * LPMSG_UPDATE_REGION;
 
-//·şÎñÆ÷×´Ì¬
+//æœåŠ¡å™¨çŠ¶æ€
 typedef struct _msg_server_status{
-    WORD  wAuthChan ;//ÊÚÈ¨Í¨µÀ
-	WORD  wLinkChan ;//Á¬½ÓÍ¨µÀ
-	WORD  wLinkUser ;//Á¬½ÓÓÃ»§
-	WORD  wStatus ;  //0:Õı³££¬1:Í£Ö¹
+    WORD  wAuthChan ;//æˆæƒé€šé“
+	WORD  wLinkChan ;//è¿æ¥é€šé“
+	WORD  wLinkUser ;//è¿æ¥ç”¨æˆ·
+	WORD  wStatus ;  //0:æ­£å¸¸ï¼Œ1:åœæ­¢
 }MSG_SERVER_STATUS , *LPMSG_SERVER_STATUS;
 
-//Í¨ÖªÖ¸Áî
+//é€šçŸ¥æŒ‡ä»¤
 typedef struct _msg_notify_info
 {
-	char  nType ;        //Í¨ÖªÀàĞÍ
-	char  nMessage;	    //ÏûÏ¢ £¬0³É¹¦£¬1Ê§°Ü£¬2»Ö¸´£¬3ÍË³ö
+	char  nType ;        //é€šçŸ¥ç±»å‹
+	char  nMessage;	    //æ¶ˆæ¯ ï¼Œ0æˆåŠŸï¼Œ1å¤±è´¥ï¼Œ2æ¢å¤ï¼Œ3é€€å‡º
 }MSG_NOTIFY_INFO, * LPMSG_NOTIFY_INFO;
 
-//ÈËÔ±ĞÅÏ¢
+//äººå‘˜ä¿¡æ¯
 typedef struct _msg_person_info
 {
 	int nID ;
@@ -893,47 +896,48 @@ typedef struct _msg_person_info
 
 	char szCardNum[20];
 
-	//ÕÕÆ¬
+	//ç…§ç‰‡
 	char *pImageBuf ;
 	int  nImageSize ;
-	//ÌØÕ÷Êı¾İ
+	//ç‰¹å¾æ•°æ®
 	int  nFeatureSize ;
 }MSG_PERSON_INFO, *LPMSG_PERSON_INFO;
 
 typedef struct _msg_operatelog_base
 {
-	int   nID;	//²Ù×÷ÓÃ»§
-	int   nDeviceID;	    //Éè±¸ID
-	int   nDeviceType;   //Éè±¸ÀàĞÍ
-	int   nChan ;        //Í¨µÀºÅ
-	int   nChanType;		//Í¨µÀÀàĞÍ
-	int   nOperateType ; //²Ù×÷ÀàĞÍ
-	int   nAction ;      //¶¯×÷
+	int   nID;	//æ“ä½œç”¨æˆ·
+	int   nDeviceID;	    //è®¾å¤‡ID
+	int   nDeviceType;   //è®¾å¤‡ç±»å‹
+	int   nChan ;        //é€šé“å·
+	int   nChanType;		//é€šé“ç±»å‹
+	int   nOperateType ; //æ“ä½œç±»å‹
+	int   nAction ;      //åŠ¨ä½œ
     unsigned int   nLogTime; 
 	unsigned int   nOperationID; 
 }MSG_OPERATELOG_BASE, * LPMSG_OPERATELOG_BASE;
 
-//È¨ÏŞ½á¹¹
+//æƒé™ç»“æ„
 typedef struct _MSG_RIGHT_DETAIL
 {
-        int  nDeviceID ;
+        int  nResID ;
+		char nResType ;
         int  nChan ;
         char nChanType ;
-        unsigned int unOpRight ;//Éè±¸·ÃÎÊÈ¨ÏŞ°´Î»È¡¾Í¿ÉÒÔ
-        unsigned int unExOpRight ;//³¬¹ı32Î»È¨ÏŞ£¬Ê¹ÓÃÕâ¸öÔ¤ÁôÈ¨ÏŞ×Ö¶Î
+        unsigned int unOpRight ;//è®¾å¤‡è®¿é—®æƒé™æŒ‰ä½å–å°±å¯ä»¥
+        unsigned int unExOpRight ;//è¶…è¿‡32ä½æƒé™ï¼Œä½¿ç”¨è¿™ä¸ªé¢„ç•™æƒé™å­—æ®µ
 }MSG_RIGHT_DETAIL, *LPMSG_RIGHT_DETAIL;
 
-typedef struct _msg_dev_config  //20150629Â¼Ïñ¼Æ»®
+typedef struct _msg_dev_config  //20150629å½•åƒè®¡åˆ’
 {
 	int   nID ;
-	int   nDeviceID;		//Éè±¸ID
-	int   nChan ;           //Í¨µÀºÅ
-	char  nChanType ;     //Â¼Ïó·½Ê½
-	char  nConfigType ;     //Â¼Ïó·½Ê½
+	int   nDeviceID;		//è®¾å¤‡ID
+	int   nChan ;           //é€šé“å·
+	char  nChanType ;     //å½•è±¡æ–¹å¼
+	char  nConfigType ;     //å½•è±¡æ–¹å¼
 	char  szConfig[1024] ;
 }MSG_DEV_CONFIG, * LPMSG_DEV_CONFIG;
 
-//±¨¾¯·Ö×é
+//æŠ¥è­¦åˆ†ç»„
 typedef struct _msg_alarm_group
 {
         int  nID ;

@@ -165,6 +165,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
 
         } else if (responseHead->byTableType == REGIONTABLE) {
             cJSON *array = cJSON_CreateArray();
+            int regionLen = sizeof(MSG_TREE_REGION_BASE);
             for (int i = 0; i < responseHead->nRecordSize; ++i) {
                 MSG_TREE_REGION_BASE lpRegion;
                 memcpy(&lpRegion, ppRecvBuf, sizeof(MSG_TREE_REGION_BASE));
@@ -231,12 +232,19 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
                 pRecvLen -= sizeof(MSG_SYSTEMSRV_BASE);
 
             }
+        } else if (responseHead->byTableType==USERGROUP_TABLE){
+            for (int i = 0; i < responseHead->nRecordSize; ++i) {
+                MSG_USERGROUP_BASE usergroupBase;
+                memcpy(&usergroupBase,ppRecvBuf, sizeof(MSG_USERGROUP_BASE));
+                ppRecvBuf+= sizeof(MSG_USERGROUP_BASE);
+                pRecvLen-= sizeof(MSG_USERGROUP_BASE);
+            }
         }
 
     }
 
 
-    CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
+//    CallJavaWithIntString(env, instance, nSession, cJSON_Print(root));
     HancNetSDK_DataRelease(nSession);
     return nSession;
 }
