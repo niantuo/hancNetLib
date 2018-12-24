@@ -146,13 +146,14 @@ typedef struct _msg_tree_region_base {
 
 //分组
 typedef struct _msg_tree_group_base {
-    int nID;
-    char szName[50];
-    int nType;  //组类型
-    int nParentID;
-    int nRegionID; //区域id
-    unsigned int unIndex;
-    bool bEnable;//有权限使用的区域
+    int  nID  ;
+    char szName[50] ;
+    int  nType ;  //组类型
+    int  nParentID ;
+    int  nRegionID ; //区域id
+    unsigned int unIndex ;
+    unsigned int unRight ;//区域权限
+    bool bEnable ;//有权限使用的区域
 } MSG_TREE_GROUP_BASE, *LPMSG_TREE_GROUP_BASE;
 
 
@@ -279,7 +280,11 @@ typedef struct _msg_recorddevice_base {
     char szUser[20];        //用户名
     char szPass[20];        //用户密码
 
-    char szRemark[200];        //备注
+#if USEUPDATE
+    char szRemark[100];        //备注
+#else
+    char szRemark[200];		//备注
+#endif
     int nRegionID;            //区域内部编号
 
     short nStorePos;
@@ -287,37 +292,48 @@ typedef struct _msg_recorddevice_base {
     char nSetAlarm;
 
     unsigned int unIndex;
+    unsigned int unRight ;//权限
+#if USEUPDATE
     unsigned int unUpdateTime; //更新时间   -- updatetime
-
+#endif
+    unsigned int nStatus ;
 
 } MSG_RECORDDEVICE_BASE, *LPMSG_RECORDDEVICE_BASE;
 
 //视频通道节点
 typedef struct _msg_video_record_base {
-    unsigned long nID;
-    int nChan;            //通道号
-    char szName[40];        //节点文本
-    int nStorePos;        //存储中的通道索引
-    int nDeviceID;        //父节点ID
-    int nMatrixPos;        //矩阵索引号
-    char nSetAlarm;
-    char nLevel;        //报警级别
-    int nType;        //通道类型
-    char szPass[20];
-    bool bDuplex;
+    unsigned long  nID ;
+    int   nChan;		    //通道号
+    char  szName[40];	    //节点文本
+    int   nStorePos;		//存储中的通道索引
+    int   nDeviceID ;	    //父节点ID
+    int   nMatrixPos;		//矩阵索引号
+    char  nSetAlarm ;
+    char  nLevel;		//报警级别
+    int   nType;        //通道类型
+    char  szPass[20];
+    bool  bDuplex ;
     int nParam1;
     int nParam2;
     int nParam3;
     int nParam4;
-    char szRemark[100];        //备注
+#if USEUPDATE
+    char szRemark[100];		//备注
     unsigned int unUpdateTime; //更新时间   -- updatetime
+#endif
+
+#if USEUPDATEFORCVR
     char szSerial[40];
+#endif
+
+#if USEUPDATE
     char szIP[20];
     char szUser[20];
-    int nPort;//视频通道的情况下nParam1表示设备类型，nParam2表示是否报警
-
-    unsigned int unIndex;
-    unsigned int nStatus;
+    int  nPort ;//视频通道的情况下nParam1表示设备类型，nParam2表示是否报警
+#endif
+    unsigned int unIndex ;
+    unsigned int unRight ;//权限
+    unsigned int  nStatus ;
 } MSG_VIDEO_RECORD_BASE, *LPMSG_VIDEO_RECORD_BASE;
 
 //表枚举

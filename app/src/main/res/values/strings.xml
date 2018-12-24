@@ -4,7 +4,7 @@
     <string name="hint_input_username">请输入用户名</string>
     <string name="hint_input_ip">请输入服务器IP</string>
     <string name="server_ip">182.92.168.177</string>
-    <string name="default_server_ip">182.92.168.177</string>
+    <string name="default_server_ip">192.168.1.38</string>
     <string name="default_username">admin</string>
     <string name="default_pwd">admin</string>
     <string name="hint_input_port">请输入服务器端口</string>
