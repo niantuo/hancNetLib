@@ -14,25 +14,35 @@ void CallJavaWithString(JNIEnv *env, jobject instance, char *message) {
     env->CallVoidMethod(instance, callbackId, jMessage);
 }
 
-jstring ctojstring(JNIEnv *env, char* tmpstr) {
+void CallJavaWithLongAndBytes(JNIEnv *env, jobject instance, long id, char *message) {
+    const char * content = env->NewGlobalRef(message);
+    jclass clz = env->GetObjectClass(instance);
+    jmethodID callbackId = env->GetMethodID(clz, "callback", "(J[B)V");
+    jbyteArray bytes = env->NewByteArray(strlen(content));
+    env->SetByteArrayRegion(bytes, 0, strlen(content), (jbyte *) content);
+    env->CallVoidMethod(instance, callbackId, id, bytes);
+}
+
+
+jstring ctojstring(JNIEnv *env, char *tmpstr) {
     jclass Class_string;
-    jmethodID mid_String,mid_getBytes;
+    jmethodID mid_String, mid_getBytes;
     jbyteArray bytes;
-    jbyte* log_utf8;
-    jstring codetype,jstr;
+    jbyte *log_utf8;
+    jstring codetype, jstr;
     Class_string = env->FindClass("java/lang/String");//获取class
     //先将gbk字符串转为java里的string格式
     mid_String = (env)->GetMethodID(Class_string, "<init>", "([BLjava/lang/String;)V");
     bytes = (env)->NewByteArray(strlen(tmpstr));
-    (env)->SetByteArrayRegion(bytes, 0, strlen(tmpstr), (jbyte*)tmpstr);
+    (env)->SetByteArrayRegion(bytes, 0, strlen(tmpstr), (jbyte *) tmpstr);
     codetype = (env)->NewStringUTF("gbk");
-    jstr = (jstring)(env)->NewObject(Class_string, mid_String, bytes, codetype);
+    jstr = (jstring) (env)->NewObject(Class_string, mid_String, bytes, codetype);
     (env)->DeleteLocalRef(bytes);
     //再将string变utf-8字符串。
-    mid_getBytes = (env)->GetMethodID(Class_string,"getBytes","(Ljava/lang/String;)[B");
+    mid_getBytes = (env)->GetMethodID(Class_string, "getBytes", "(Ljava/lang/String;)[B");
     codetype = (env)->NewStringUTF("utf-8");
-    bytes=(jbyteArray)(env)->CallObjectMethod(jstr,mid_getBytes,codetype);
-    log_utf8=(env)->GetByteArrayElements(bytes,JNI_FALSE);
+    bytes = (jbyteArray) (env)->CallObjectMethod(jstr, mid_getBytes, codetype);
+    log_utf8 = (env)->GetByteArrayElements(bytes, JNI_FALSE);
     return (env)->NewStringUTF(reinterpret_cast<const char *>(log_utf8));
 }
 
@@ -46,11 +56,12 @@ jstring ctojstring(JNIEnv *env, char* tmpstr) {
 void CallJavaWithIntString(JNIEnv *env, jobject instance, int type, char *message) {
     jclass clz = env->GetObjectClass(instance);
     jmethodID callbackId = env->GetMethodID(clz, "callback", "(ILjava/lang/String;)V");
-    jstring jMessage = ctojstring(env,message);
+    jstring jMessage = ctojstring(env, message);
     env->CallVoidMethod(instance, callbackId, type, jMessage);
 }
 
-cJSON* UserToJsonObj(MSG_USER_BASE userBase) {
+
+cJSON *UserToJsonObj(MSG_USER_BASE userBase) {
     //生成json字符串，回调给前端。
     cJSON *userRoot = cJSON_CreateObject();
     cJSON_AddItemToObject(userRoot, "nId", cJSON_CreateNumber(userBase.nID));
@@ -69,7 +80,7 @@ cJSON* UserToJsonObj(MSG_USER_BASE userBase) {
     return userRoot;
 }
 
-cJSON * RegionToJsonArray(MSG_TREE_REGION_BASE regionBase) {
+cJSON *RegionToJsonArray(MSG_TREE_REGION_BASE regionBase) {
     cJSON *root = cJSON_CreateObject();
     cJSON_AddItemToObject(root, "id", cJSON_CreateNumber(regionBase.nID));
     cJSON_AddItemToObject(root, "name", cJSON_CreateString(regionBase.szName));
@@ -186,7 +197,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
 
             cJSON *userRoot = UserToJsonObj(userBase);
             CallJavaWithIntString(env, instance, nSession, cJSON_Print(userRoot));
-            cJSON_AddItemToObject(root,"user",userRoot);
+            cJSON_AddItemToObject(root, "user", userRoot);
 
         } else if (responseHead->byTableType == REGIONTABLE) {
             cJSON *array = cJSON_CreateArray();
@@ -198,11 +209,12 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
                 pRecvLen -= regionLen;
                 cJSON *item = RegionToJsonArray(lpRegion);
                 cJSON_AddItemToArray(array, item);
-                const char * json = cJSON_Print(item);
-                CallJavaWithIntString(env, instance, nSession, cJSON_Print(item));
+//                const char *json = cJSON_Print(item);
+//                CallJavaWithIntString(env, instance, nSession, cJSON_Print(item));
             }
             cJSON_AddItemToObject(root, "regions", array);
-            CallJavaWithIntString(env, instance, nSession, cJSON_Print(array));
+            CallJavaWithLongAndBytes(env, instance, 1, cJSON_Print(array));
+//            CallJavaWithIntString(env, instance, nSession, cJSON_Print(array));
         } else if (responseHead->byTableType == SERVER_TABLE) {
             cJSON *array = cJSON_CreateArray();
             size_t lpServerLen = sizeof(MSG_SYSTEMSRV_BASE);
@@ -232,7 +244,7 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
             size_t chanGroupLen = sizeof(MSG_CHANGROUP_BASE);
             for (int i = 0; i < responseHead->nRecordSize; i++) {
                 MSG_CHANGROUP_BASE lpGroupChan;
-                memcpy(&lpGroupChan, ppRecvBuf,chanGroupLen);
+                memcpy(&lpGroupChan, ppRecvBuf, chanGroupLen);
                 ppRecvBuf += chanGroupLen;
                 pRecvLen -= chanGroupLen;
                 CHANGROUP_Add_To_Array(array, lpGroupChan);
@@ -243,10 +255,10 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
             size_t recordDeviceLen = sizeof(MSG_RECORDDEVICE_BASE);//长度：320
             for (int i = 0; i < responseHead->nRecordSize; ++i) {
 
-                MSG_RECORDDEVICE_BASE dev ;
-                memset(&dev,0,recordDeviceLen) ;
+                MSG_RECORDDEVICE_BASE dev;
+                memset(&dev, 0, recordDeviceLen);
 
-                memcpy(&dev,ppRecvBuf,recordDeviceLen);
+                memcpy(&dev, ppRecvBuf, recordDeviceLen);
                 ppRecvBuf += recordDeviceLen;
                 pRecvLen -= recordDeviceLen;
 
@@ -271,12 +283,12 @@ int login(JNIEnv *env, jobject instance, char *ip, int port, char *username, cha
                 pRecvLen -= sizeof(MSG_SYSTEMSRV_BASE);
 
             }
-        } else if (responseHead->byTableType==USERGROUP_TABLE){
+        } else if (responseHead->byTableType == USERGROUP_TABLE) {
             for (int i = 0; i < responseHead->nRecordSize; ++i) {
                 MSG_USERGROUP_BASE usergroupBase;
-                memcpy(&usergroupBase,ppRecvBuf, sizeof(MSG_USERGROUP_BASE));
-                ppRecvBuf+= sizeof(MSG_USERGROUP_BASE);
-                pRecvLen-= sizeof(MSG_USERGROUP_BASE);
+                memcpy(&usergroupBase, ppRecvBuf, sizeof(MSG_USERGROUP_BASE));
+                ppRecvBuf += sizeof(MSG_USERGROUP_BASE);
+                pRecvLen -= sizeof(MSG_USERGROUP_BASE);
             }
         }
 

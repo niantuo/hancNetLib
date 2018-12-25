@@ -13,7 +13,7 @@ public class HancNetSupport {
     private final static String TAG = HancNetSupport.class.getSimpleName();
     private final static int BUFFER_SIZE = 2048;
 
-    private ByteBuffer mBuffer ;
+    private ByteBuffer mBuffer;
 
     static {
         System.loadLibrary("net-lib");
@@ -28,23 +28,28 @@ public class HancNetSupport {
         return mSupport;
     }
 
-    private HancNetSupport(){
+    private HancNetSupport() {
         mBuffer = ByteBuffer.allocateDirect(BUFFER_SIZE);
     }
 
 
     public native boolean init();
-    public native int loginToServer(String ip,int port,String username,String password);
 
-    public native int startMediaPlay(Object buffer,int len,int session);
+    public native int loginToServer(String ip, int port, String username, String password);
 
-    public void callback(String message){
-        Log.i(TAG,"JNI callback: "+message);
+    public native int startMediaPlay(Object buffer, int len, int session);
+
+    public void callback(String message) {
+        Log.i(TAG, "JNI callback: " + message);
     }
 
 
-    public void callback(int value,String message){
-        Log.i(TAG,String.format("callback type:%s content:%s",value,message));
+    public void callback(int value, String message) {
+        Log.i(TAG, String.format("callback type:%s content:%s", value, message));
+    }
+
+    public void callback(long id, byte[] bytes) {
+        Log.i(TAG, String.format("callback id:%s,content:%s", id, new String(bytes)));
     }
 
 }
