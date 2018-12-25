@@ -2,6 +2,7 @@
 // Created by niantuo on 2018/11/18.
 //
 
+
 #ifndef HANCNETLIB_JNIHANCNET_H
 #define HANCNETLIB_JNIHANCNET_H
 
@@ -126,7 +127,7 @@
 #define USEUPDATEFORCVR 1
 
 
-#include <hancnetsdk.h>
+
 
 
 //区域、用户与权限管理
@@ -146,14 +147,14 @@ typedef struct _msg_tree_region_base {
 
 //分组
 typedef struct _msg_tree_group_base {
-    int  nID  ;
-    char szName[50] ;
-    int  nType ;  //组类型
-    int  nParentID ;
-    int  nRegionID ; //区域id
-    unsigned int unIndex ;
-    unsigned int unRight ;//区域权限
-    bool bEnable ;//有权限使用的区域
+    int nID;
+    char szName[50];
+    int nType;  //组类型
+    int nParentID;
+    int nRegionID; //区域id
+    unsigned int unIndex;
+    unsigned int unRight;//区域权限
+    bool bEnable;//有权限使用的区域
 } MSG_TREE_GROUP_BASE, *LPMSG_TREE_GROUP_BASE;
 
 
@@ -192,6 +193,8 @@ typedef struct _msg_systemsrv_base {
 #endif
 
 } MSG_SYSTEMSRV_BASE, *LPMSG_SYSTEMSRV_BASE;
+
+
 
 typedef struct _msg_user_info  //登录信息
 {
@@ -240,6 +243,8 @@ typedef struct _msg_usergroup_base {
     bool bUseDetailRight;
 
 } MSG_USERGROUP_BASE, *LPMSG_USERGROUP_BASE;
+
+
 
 //通讯数据头，用于服务器间的数据通讯,所有向关设备，均使用此头进行通讯
 typedef struct _msg_head_info {
@@ -292,33 +297,33 @@ typedef struct _msg_recorddevice_base {
     char nSetAlarm;
 
     unsigned int unIndex;
-    unsigned int unRight ;//权限
+    unsigned int unRight;//权限
 #if USEUPDATE
     unsigned int unUpdateTime; //更新时间   -- updatetime
 #endif
-    unsigned int nStatus ;
+    unsigned int nStatus;
 
 } MSG_RECORDDEVICE_BASE, *LPMSG_RECORDDEVICE_BASE;
 
 //视频通道节点
 typedef struct _msg_video_record_base {
-    unsigned long  nID ;
-    int   nChan;		    //通道号
-    char  szName[40];	    //节点文本
-    int   nStorePos;		//存储中的通道索引
-    int   nDeviceID ;	    //父节点ID
-    int   nMatrixPos;		//矩阵索引号
-    char  nSetAlarm ;
-    char  nLevel;		//报警级别
-    int   nType;        //通道类型
-    char  szPass[20];
-    bool  bDuplex ;
+    unsigned long nID;
+    int nChan;            //通道号
+    char szName[40];        //节点文本
+    int nStorePos;        //存储中的通道索引
+    int nDeviceID;        //父节点ID
+    int nMatrixPos;        //矩阵索引号
+    char nSetAlarm;
+    char nLevel;        //报警级别
+    int nType;        //通道类型
+    char szPass[20];
+    bool bDuplex;
     int nParam1;
     int nParam2;
     int nParam3;
     int nParam4;
 #if USEUPDATE
-    char szRemark[100];		//备注
+    char szRemark[100];        //备注
     unsigned int unUpdateTime; //更新时间   -- updatetime
 #endif
 
@@ -329,12 +334,13 @@ typedef struct _msg_video_record_base {
 #if USEUPDATE
     char szIP[20];
     char szUser[20];
-    int  nPort ;//视频通道的情况下nParam1表示设备类型，nParam2表示是否报警
+    int nPort;//视频通道的情况下nParam1表示设备类型，nParam2表示是否报警
 #endif
-    unsigned int unIndex ;
-    unsigned int unRight ;//权限
-    unsigned int  nStatus ;
+    unsigned int unIndex;
+    unsigned int unRight;//权限
+    unsigned int nStatus;
 } MSG_VIDEO_RECORD_BASE, *LPMSG_VIDEO_RECORD_BASE;
+
 
 //表枚举
 typedef enum _ENUM_DATABASE_TABLE {
@@ -381,3 +387,4 @@ typedef enum _ENUM_DATABASE_TABLE {
 
 
 #endif //HANCNETLIB_JNIHANCNET_H
+
